@@ -8,11 +8,7 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 8
 
-# (No) Title Bars
-for_window [class="^.*"] border pixel 3
 
-# Set walpaper
-exec_always --no-startup-id hsetroot -full ~/wallpapers/arch-wallpaper.png
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -151,6 +147,13 @@ bar {
 
 
 # !!!!!!!!!!!!!!!!!!!!!! Start of custom Config!!!!!!!!!!!!!!!!!!!!!!!!!
+
+# (No) Title Bars
+for_window [class="^.*"] border pixel 3
+
+# Set walpaper
+exec_always --no-startup-id hsetroot -full ~/wallpapers/arch-wallpaper.png
+
 ## Custom Keybinding for applications
 # start a terminal
 bindsym $mod+space exec st
