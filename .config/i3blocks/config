@@ -26,8 +26,9 @@ label=MEM:
 command=./mem.sh
 interval=5
 
-[gpu]
-command=./gpu_temp.sh
+[battery]
+label=Battery: 
+command=./battery.sh
 interval=5
 
 [disk]
