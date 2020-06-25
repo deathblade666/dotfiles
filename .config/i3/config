@@ -153,7 +153,7 @@ bindsym $mod+d mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-       status_command i3blocks -c ~/.config/dot_files/i3blocks/config
+       status_command i3blocks
 }
 
 
@@ -170,10 +170,9 @@ bindsym $mod+Shift+q kill
 # Launch Chromium
 bindsym $mod+b exec chromium
 # start rofi (a program launcher)
-bindsym $mod+r exec rofi -modi "run#ssh" -show run -config /home/deathmasia/.config/dot_files/rofi/config
+bindsym $mod+r exec rofi -modi "run#ssh" -show run
 # Lock Screen
 bindsym $mod+l exec i3lock --color=#161719
-
 
 # Open Applications in specific workspaces
 # Workspace 1 (General) assigned applications
