@@ -44,7 +44,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -165,14 +165,22 @@ bindsym $mod2+s exec steam
 # kill focused window
 bindsym $mod2+Shift+q kill
 # Launch Chromium
-bindsym $mod2+b exec chromium
+bindsym $mod2+c exec chromium
+# Launch QuteBrowser
+bindsym $mod2+b exec qutebrowser
 # start rofi (a program launcher)
 bindsym $mod2+r exec rofi -modi "run#ssh" -show run
 # Lock Screen
 bindsym $mod2+l exec i3lock --color=#161719
 
+# Open the following applications in full screen
+for_window [class="qutebrowser"] fullscreen
+for_window [class="Steam"] fullscreen
+#for_window [class="^Gitg$"] fullscreen
+
 # Open Applications in specific workspaces
 # Workspace 1 (General) assigned applications
+assign [class="qutebrowser"] $ws1
 assign [class="Chromium"] $ws1
 # Workspace 2 (Terminal) assigned applications
 assign [class="st"] $ws2
