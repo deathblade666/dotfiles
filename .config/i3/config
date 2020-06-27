@@ -173,6 +173,11 @@ bindsym $mod2+r exec rofi -modi "run#ssh" -show run
 # Lock Screen
 bindsym $mod2+l exec i3lock --color=#161719
 
+# Open the following applications in full screen
+for_window [class="qutebrowser"] fullscreen
+for_window [class="Steam"] fullscreen
+#for_window [class="^Gitg$"] fullscreen
+
 # Open Applications in specific workspaces
 # Workspace 1 (General) assigned applications
 assign [class="qutebrowser"] $ws1
