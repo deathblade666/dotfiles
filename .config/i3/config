@@ -152,6 +152,9 @@ set $Mod2 mod4
 # (No) Title Bars
 for_window [class="^.*"] border pixel 1
 
+# Enalbing smat boroder, no borders will be present unless there is more than one (1) window
+smart_borders on
+
 # Set walpaper
 exec_always --no-startup-id hsetroot -full ~/wallpapers/arch-wallpaper.png
 
