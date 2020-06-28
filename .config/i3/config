@@ -150,7 +150,10 @@ bar {
 set $Mod2 mod4
 
 # (No) Title Bars
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 1
+
+# Enalbing smat boroder, no borders will be present unless there is more than one (1) window
+smart_borders on
 
 # Set walpaper
 exec_always --no-startup-id hsetroot -full ~/wallpapers/arch-wallpaper.png
@@ -173,10 +176,8 @@ bindsym $mod2+r exec rofi -modi "run#ssh" -show run
 # Lock Screen
 bindsym $mod2+l exec i3lock --color=#161719
 
-# Open the following applications in full screen
-for_window [class="qutebrowser"] fullscreen
-for_window [class="Steam"] fullscreen
-#for_window [class="^Gitg$"] fullscreen
+# Define layout per application
+for_window [class="qutebrowser"] layout tabbed
 
 # Open Applications in specific workspaces
 # Workspace 1 (General) assigned applications
