@@ -34,7 +34,7 @@ interval=5
 [disk]
 label=Disk:
 command=./disk.sh
-interval=30
+interval=once
 
 [ip]
 command=hostname -i | awk '{ print "IP:" $1 }'
@@ -43,4 +43,4 @@ color=#91E78B
 
 [time]
 command=date '+%l:%M%P %m-%d-%Y '
-interval=1
+interval=50
