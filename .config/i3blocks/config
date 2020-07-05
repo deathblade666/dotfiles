@@ -12,28 +12,28 @@ separator_block_width=15
 
 [cpu-usage]
 label=CPU:
-command=./cpu_usage.sh
+command= exec $HOME/.config/scripts/i3blocks/cpu_usage.sh
 interval=5
 separator=false
 
 [cpu]
 label=Temp:
-command=./cpu_temp.sh
+command= exec $HOME/.config/scripts/i3blocks/cpu_temp.sh
 interval=5
 
 [memory]
 label=MEM:
-command=./mem.sh
+command= exec $HOME/.config/scripts/i3blocks/mem.sh
 interval=5
 
 [battery]
 label=Battery: 
-command=./battery.sh
+command= exec $HOME/.config/scripts/i3blocks/battery.sh
 interval=5
 
 [disk]
 label=Disk:
-command=./disk.sh
+command= exec $HOME/.config/scripts/i3blocks/disk.sh
 interval=once
 
 [ip]
