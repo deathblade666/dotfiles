@@ -107,3 +107,5 @@ alias omzconf="nano ~/.oh-my-zsh/oh-my-zsh.sh"
 alias i3conf="nano ~/.config/i3/config"
 alias config='/usr/bin/git --git-dir=/home/deathmasia/.cfg/ --work-tree=/home/deathmasia'
 alias nano='vim'
+alias qtile='startx /usr/bin/qtile'
+alias i3='startx /usr/bin/i3'
