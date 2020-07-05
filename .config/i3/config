@@ -156,7 +156,7 @@ for_window [class="^.*"] border pixel 1
 smart_borders on
 
 # Set walpaper
-exec_always --no-startup-id hsetroot -full ~/wallpapers/arch-wallpaper.png
+exec_always --no-startup-id hsetroot -full ~/Pictures/picture.jpg
 
 ## Custom Keybinding for applications
 # start a terminal
@@ -174,7 +174,7 @@ bindsym $mod2+b exec qutebrowser
 # start rofi (a program launcher)
 bindsym $mod2+r exec rofi -modi "run#ssh" -show run
 # Lock Screen
-bindsym $mod2+l exec i3lock --image=$HOME/Pictures/test.png
+bindsym $mod2+l exec ~/.config/scripts/i3lock/i3lock.sh 
 
 # Define layout per application
 for_window [class="qutebrowser"] layout tabbed
