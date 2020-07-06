@@ -17,6 +17,7 @@ Plugin 'dracula/vim'
 " => Powerline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 packadd! dracula
+syntax enable
 colorscheme dracula 
 
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
