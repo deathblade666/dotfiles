@@ -32,15 +32,11 @@ import os
 import re
 import socket
 import subprocess
-from libqtile.config import Key, Screen, Group, Drag, Click
+from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from typing import List  # noqa: F401
-from libqtile.config import Key, Screen, Group, Drag, Click
-from libqtile.lazy import lazy
-from libqtile import layout, bar, widget
 
-from typing import List  # noqa: F401
 
 mod = "mod4"
 
@@ -79,74 +75,160 @@ keys = [
     ###############################################################
     Key([mod], "b", lazy.spawn("qutebrowser")),
     Key([mod], "c", lazy.spawn("chromium")),
-    Key([mod], "e", lazy.spawn("ranger")),
+    Key([mod], "e", lazy.spawn("st" + ' -e ranger')),
 ]
 
-groups = [Group(i) for i in "1234"]
 
-for i in groups:
-    keys.extend([
-        # mod1 + letter of group = switch to group
-        Key([mod], i.name, lazy.group[i.name].toscreen()),
+##### GROUPS #####
+group_names = [("General", {'layout': 'tile'}),
+               ("Term", {'layout': 'tile'}),
+               ("Files", {'layout': 'tile'}),
+               ("Media", {'layout': 'tile'}),
+]
 
-        # mod1 + shift + letter of group = switch to & move focused window to group
-        Key([mod, "shift"], i.name, lazy.window.togroup(i.name, switch_group=True)),
-        # Or, use below if you prefer not to switch to that group.
-        # # mod1 + shift + letter of group = move focused window to group
-        # Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
-    ])
+groups = [Group(name, **kwargs) for name, kwargs in group_names]
+
+for i, (name, kwargs) in enumerate(group_names, 1):
+    keys.append(Key([mod], str(i), lazy.group[name].toscreen()))        # Switch to another group
+    keys.append(Key([mod, "shift"], str(i), lazy.window.togroup(name))) # Send current window to another group	
+
+#######################################
+# Spawn Applications in specific Groups
+#######################################
+
+groups = [
+	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
+	Group("Term", matches=[Match(wm_class=["st-256color"])]),
+	Group("Files", matches=[Match(wm_class=["st" + ' -e ranger'])]),
+	Group("Media", matches=[Match(wm_class=["mpv", "Sxiv"])]),
+]
+
+##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
+layout_theme = {"border_width": 1,
+                "margin": 0,
+                "border_focus": "#8ee2ff",
+                "border_normal": "#207e97"
+                }
 
 layouts = [
-    layout.Max(),
+    # layout.Max(),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
 
-     layout.MonadTall(),
+    # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-     layout.Tile(),
-     layout.TreeTab(),
+     layout.Tile(
+	border_width = 1,
+	border_focus = "#8ee2ff",
+	border_normal = "#207e97",
+    ),
+    # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
+##### COLORS #####
+colors = [["#03132c", "#03132c"], # panel background
+          ["#616882", "#616882"], # background for current screen tab
+          ["#ffffff", "#ffffff"], # font color for group names
+          ["#a0627b", "#a0627b"], # border line color for current tab
+          ["#d65162", "#d65162"], # border line color for other tab and odd widgets
+          ["#369baf", "#369baf"], # color for the even widgets
+          ["#e1acff", "#e1acff"]] # window name
+
+##### PROMPT #####
+prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+
+##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
-    font='sans',
-    fontsize=12,
-    padding=3,
+    font="Ubuntu Mono",
+    fontsize = 12,
+    padding = 0,
+    background=colors[0]
 )
 extension_defaults = widget_defaults.copy()
 
+
+##### WIDGETS #####
+
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
-                widget.CurrentLayout(),
+		widget.Sep(
+                        linewidth=0,
+                        padding=6,
+                        background=colors[0],
+                        foreground=colors[2],
+                ),
                 widget.GroupBox(),
-                widget.Prompt(),
-                widget.WindowName(),
-                widget.Systray(),
+		widget.WindowName(
+			background=colors[0],
+			foreground=colors[0],
+		),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow.jpg",
+		),
 		widget.CPU(
-			update_interval = 1,
+			background=colors[4],
+			foreground=colors[2],
+			padding=2,
 		),
-		widget.Memory(),
+		widget.TextBox(
+			text=" ⭍",
+			background=colors[4],
+			foreground=colors[2],
+			fontsize=15,
+			padding=2,
+		),
+		widget.Battery(
+			background=colors[4],
+			foreground=colors[2],
+			padding=2,
+		),
+                widget.TextBox(
+                        text=" 🖬",
+                        background=colors[4],
+                        foreground=colors[2],
+                        padding=2,
+                        fontsize=14,
+               ),
+               widget.Memory(
+                        background=colors[4],
+                        foreground=colors[2],
+                        padding=5,
+                ),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow-blue.jpg",
+		),
+		widget.TextBox(
+			text="Network: ",
+			background=colors[5],
+			foreground=colors[2],
+		),
 		widget.Net(
-			interface = "wlp1s0",
-                        format = '{down} ↓↑ {up}',
+			format='{down} ↓↑ {up}',
+			background=colors[5],
+			foreground=colors[2],
+			padding=4,
 		),
-		widget.ThermalSensor(),
-		widget.Battery(),
-		widget.Pacman(
-                        update_interval = 1800,
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow-purple.jpg",
 		),
-		widget.PulseVolume(),
-                widget.Clock(format='%Y-%m-%d %a %I:%M %p'),
+                widget.Clock(
+			format='%Y-%m-%d %a %I:%M %p',
+			background=colors[3],
+			foreground=colors[2],
+			padding=5,
+		),
             ],
             24,
         ),
     ),
 ]
+
 
 # Drag floating layouts.
 mouse = [
@@ -182,6 +264,13 @@ floating_layout = layout.Floating(float_rules=[
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+
+##### STARTUP APPLICATIONS #####
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/scripts/qtile/startup.sh'])
+
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
