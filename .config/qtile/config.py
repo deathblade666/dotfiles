@@ -130,12 +130,12 @@ layouts = [
 
 ##### COLORS #####
 colors = [["#03132c", "#03132c"], # panel background
-          ["#616882", "#616882"], # background for current screen tab
-          ["#ffffff", "#ffffff"], # font color for group names
-          ["#a0627b", "#a0627b"], # border line color for current tab
-          ["#d65162", "#d65162"], # border line color for other tab and odd widgets
-          ["#369baf", "#369baf"], # color for the even widgets
-          ["#e1acff", "#e1acff"]] # window name
+          ["#616882", "#616882"], # 
+          ["#ffffff", "#ffffff"], # text color (white)
+          ["#a0627b", "#a0627b"], # purple background for widgets
+          ["#d65162", "#d65162"], # red backgroun for widgets
+          ["#369baf", "#369baf"], # light-blue background for widgets
+          ["#e1acff", "#e1acff"]] # 
 
 ##### PROMPT #####
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
