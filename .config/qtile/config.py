@@ -115,7 +115,6 @@ layouts = [
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
-
     # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
@@ -172,6 +171,7 @@ screens = [
 			filename="~/.config/qtile/pictures/arrow.jpg",
 		),
 		widget.CPU(
+			format='CPU {load_percent}%',
 			background=colors[4],
 			foreground=colors[2],
 			padding=2,
@@ -184,6 +184,7 @@ screens = [
 			padding=2,
 		),
 		widget.Battery(
+			format='{percent:2.0%}',
 			background=colors[4],
 			foreground=colors[2],
 			padding=2,
@@ -204,7 +205,7 @@ screens = [
 			filename="~/.config/qtile/pictures/arrow-blue.jpg",
 		),
 		widget.TextBox(
-			text="Network: ",
+			text="Network ",
 			background=colors[5],
 			foreground=colors[2],
 		),
@@ -216,6 +217,16 @@ screens = [
 		),
 		widget.Image(
 			filename="~/.config/qtile/pictures/arrow-purple.jpg",
+		),
+		widget.TextBox(
+			text="Vol ",
+			background=colors[3],
+			foreground=colors[2],
+		),
+		widget.Volume(
+			background=colors[3],
+			foreground=colors[2],
+			padding=2
 		),
                 widget.Clock(
 			format='%Y-%m-%d %a %I:%M %p',
