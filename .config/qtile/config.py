@@ -32,6 +32,7 @@ import os
 import re
 import socket
 import subprocess
+from libqtile.window import Window
 from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
@@ -46,8 +47,8 @@ keys = [
     Key([mod], "Left", lazy.layout.up()),
 
     # Move windows up or down in current stack
-    Key([mod, "control"], "k", lazy.layout.shuffle_down()),
-    Key([mod, "control"], "j", lazy.layout.shuffle_up()),
+    Key([mod, "control"], "Right", lazy.layout.shuffle_down()),
+    Key([mod, "control"], "Left", lazy.layout.shuffle_up()),
 
     # Switch window focus to other pane(s) of stack
     Key([mod], "space", lazy.layout.next()),
@@ -68,11 +69,11 @@ keys = [
 
     Key([mod, "control"], "r", lazy.restart()),
     Key([mod, "control"], "q", lazy.shutdown()),
-    Key([mod], "r", lazy.spawncmd()),
+    Key([mod], "r", lazy.spawn("rofi -modi run#ssh -show run")),
 
     ################################################################
     # Custom Keybindings
-    ###############################################################
+    ################################################################
     Key([mod], "b", lazy.spawn("qutebrowser")),
     Key([mod], "c", lazy.spawn("chromium")),
     Key([mod], "e", lazy.spawn("st" + ' -e ranger')),
@@ -98,8 +99,8 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 groups = [
 	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
-	Group("Term", matches=[Match(wm_class=["st-256color"])]),
-	Group("Files", matches=[Match(wm_class=["st" + ' -e ranger'])]),
+	Group("Term", matches=[Match(title=["~"])]),
+	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"])]),
 	Group("Media", matches=[Match(wm_class=["mpv", "Sxiv"])]),
 ]
 
@@ -111,7 +112,7 @@ layout_theme = {"border_width": 1,
                 }
 
 layouts = [
-    # layout.Max(),
+     layout.Max(),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
