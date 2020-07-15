@@ -220,7 +220,7 @@ screens = [
 			filename="~/.config/qtile/pictures/arrow-purple.jpg",
 		),
 		widget.TextBox(
-			text="Volume ",
+			text="🔊 ",
 			background=colors[3],
 			foreground=colors[2],
 		),
@@ -239,6 +239,18 @@ screens = [
 			foreground=colors[2],
 			backlight_name="intel_backlight",
 			format='{percent: 2.0%}',
+			padding=4,
+		),
+		widget.TextBox(
+			text=" ↻ ",
+			background=colors[3],
+			foreground=colors[2],
+		),
+		widget.CheckUpdates(
+			display_format='{updates}',
+			background=colors[3],
+			foreground=colors[2],
+			update_interval=1800,
 			padding=4,
 		),
 		widget.Image(
