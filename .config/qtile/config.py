@@ -112,7 +112,7 @@ layout_theme = {"border_width": 1,
                 }
 
 layouts = [
-     layout.Max(),
+    # layout.Max(),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
@@ -131,7 +131,7 @@ layouts = [
 
 ##### COLORS #####
 colors = [["#03132c", "#03132c"], # panel background
-          ["#616882", "#616882"], # 
+          ["#616882", "#616882"], # Grey-ish background for widgets
           ["#ffffff", "#ffffff"], # text color (white)
           ["#a0627b", "#a0627b"], # purple background for widgets
           ["#d65162", "#d65162"], # red backgroun for widgets
@@ -220,20 +220,34 @@ screens = [
 			filename="~/.config/qtile/pictures/arrow-purple.jpg",
 		),
 		widget.TextBox(
-			text="Vol ",
+			text="Volume ",
 			background=colors[3],
 			foreground=colors[2],
 		),
 		widget.Volume(
 			background=colors[3],
 			foreground=colors[2],
-			padding=2
+			padding=2,
 		),
-                widget.Clock(
-			format='%Y-%m-%d %a %I:%M %p',
+		widget.TextBox(
+			text=" ☀",
 			background=colors[3],
 			foreground=colors[2],
-			padding=5,
+		),
+		widget.Backlight(
+			background=colors[3],
+			foreground=colors[2],
+			backlight_name="intel_backlight",
+			format='{percent: 2.0%}',
+			padding=4,
+		),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow-purplegrey.jpg",
+		),
+                widget.Clock(
+			format='%a %I:%M %p %m-%d-%Y',
+			background=colors[1],
+			foreground=colors[2],
 		),
             ],
             24,
