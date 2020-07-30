@@ -85,6 +85,7 @@ group_names = [("General", {'layout': 'tile'}),
                ("Term", {'layout': 'tile'}),
                ("Files", {'layout': 'tile'}),
                ("Media", {'layout': 'tile'}),
+	       ("VM", {'layout': 'tile'}),
 ]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -102,6 +103,7 @@ groups = [
 	Group("Term", matches=[Match(title=["~"])]),
 	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"])]),
 	Group("Media", matches=[Match(wm_class=["mpv", "Sxiv"])]),
+	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
 ]
 
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
@@ -112,7 +114,7 @@ layout_theme = {"border_width": 1,
                 }
 
 layouts = [
-     layout.Max(),
+    # layout.Max(),
     # layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
