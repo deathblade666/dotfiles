@@ -100,10 +100,15 @@ source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 USER=''
-alias update="sudo pacman -Syu"
-alias ..="cd .."
-alias zshconf="nano ~/.zshrc"
-alias omzconf="nano ~/.oh-my-zsh/oh-my-zsh.sh"
-alias i3conf="nano ~/.config/i3/config"
+alias sys-update='sudo pacman -Syu'
+alias update='sudo pacman -Syy'
+alias ..='cd ..'
+alias zshconf='vim ~/.zshrc'
+alias omzconf='vim ~/.oh-my-zsh/oh-my-zsh.sh'
+alias i3conf='vim ~/.config/i3/config'
 alias config='/usr/bin/git --git-dir=/home/deathmasia/.cfg/ --work-tree=/home/deathmasia'
-alias nano='vim'
+alias qtile='startx /usr/bin/qtile'
+alias i3='startx /usr/bin/i3'
+alias qtileconf='vim ~/.config/qtile/config.py'
+alias i3blocks='vim ~/.conifg/i3blocks/config'
+alias pac-install='sudo pacman -S'
