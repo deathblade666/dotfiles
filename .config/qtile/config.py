@@ -178,14 +178,13 @@ screens = [
 			padding=2,
 		),
 		widget.TextBox(
-			text=" ⭍",
+			text=" Temp",
 			background=colors[4],
 			foreground=colors[2],
 			fontsize=15,
 			padding=2,
 		),
-		widget.Battery(
-			format='{percent:2.0%}',
+		widget.ThermalSensor(
 			background=colors[4],
 			foreground=colors[2],
 			padding=2,
