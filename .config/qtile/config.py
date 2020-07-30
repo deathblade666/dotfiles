@@ -168,9 +168,9 @@ screens = [
 			background=colors[0],
 			foreground=colors[0],
 		),
-		widget.Image(
-			filename="~/.config/qtile/pictures/arrow.jpg",
-		),
+	#	widget.Image(
+	#		filename="~/.config/qtile/pictures/arrow.jpg",
+	#	),
 		widget.CPU(
 			format='CPU {load_percent}%',
 			background=colors[4],
@@ -202,9 +202,9 @@ screens = [
                         foreground=colors[2],
                         padding=5,
                 ),
-		widget.Image(
-			filename="~/.config/qtile/pictures/arrow-blue.jpg",
-		),
+	#	widget.Image(
+	#		filename="~/.config/qtile/pictures/arrow-blue.jpg",
+	#	),
 		widget.TextBox(
 			text="Network ",
 			background=colors[5],
@@ -216,9 +216,9 @@ screens = [
 			foreground=colors[2],
 			padding=4,
 		),
-		widget.Image(
-			filename="~/.config/qtile/pictures/arrow-purple.jpg",
-		),
+	#	widget.Image(
+	#		filename="~/.config/qtile/pictures/arrow-purple.jpg",
+	#	),
 		widget.TextBox(
 			text="Vol ",
 			background=colors[3],
