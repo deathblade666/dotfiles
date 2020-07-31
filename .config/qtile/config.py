@@ -102,7 +102,7 @@ groups = [
 	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
 	Group("Term", matches=[Match(title=["~"])]),
 	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"])]),
-	Group("Media", matches=[Match(wm_class=["mpv", "Sxiv"])]),
+	Group("Media", matches=[Match(wm_class=["mpv"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
 ]
 
@@ -180,10 +180,9 @@ screens = [
 			padding=2,
 		),
 		widget.TextBox(
-			text=" Temp",
+			text=" Thermal",
 			background=colors[4],
 			foreground=colors[2],
-			fontsize=15,
 			padding=2,
 		),
 		widget.ThermalSensor(
@@ -192,11 +191,10 @@ screens = [
 			padding=2,
 		),
                 widget.TextBox(
-                        text=" 🖬",
+                        text=" RAM",
                         background=colors[4],
                         foreground=colors[2],
                         padding=2,
-                        fontsize=14,
                ),
                widget.Memory(
                         background=colors[4],
@@ -221,7 +219,7 @@ screens = [
 	#		filename="~/.config/qtile/pictures/arrow-purple.jpg",
 	#	),
 		widget.TextBox(
-			text="Vol ",
+			text="🔊 ",
 			background=colors[3],
 			foreground=colors[2],
 		),
@@ -230,11 +228,22 @@ screens = [
 			foreground=colors[2],
 			padding=2
 		),
-                widget.Clock(
-			format='%Y-%m-%d %a %I:%M %p',
+		widget.TextBox(
+			text=" ↻ ",
 			background=colors[3],
 			foreground=colors[2],
-			padding=5,
+		),
+		widget.CheckUpdates(
+			display_format='{updates}',
+			background=colors[3],
+			foreground=colors[2],
+			update_interval=1800,
+			padding=4,
+		),
+                widget.Clock(
+			format='%a %I:%M %p %m-%d-%Y',
+			background=colors[1],
+			foreground=colors[2],
 		),
             ],
             24,
