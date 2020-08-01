@@ -77,6 +77,7 @@ keys = [
     Key([mod], "b", lazy.spawn("qutebrowser")),
     Key([mod], "c", lazy.spawn("chromium")),
     Key([mod], "e", lazy.spawn("st" + ' -e ranger')),
+    Key([mod], "s", lazy.spawn("steam")),
 ]
 
 
@@ -84,7 +85,8 @@ keys = [
 group_names = [("General", {'layout': 'tile'}),
                ("Term", {'layout': 'tile'}),
                ("Files", {'layout': 'tile'}),
-               ("Media", {'layout': 'tile'}),
+               ("Games", {'layout': 'tile'}),
+	       ("Media", {'layout': 'tile'}),
 	       ("VM", {'layout': 'tile'}),
 ]
 
@@ -100,17 +102,19 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 groups = [
 	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
-	Group("Term", matches=[Match(title=["~"])]),
-	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"])]),
-	Group("Media", matches=[Match(wm_class=["mpv"])]),
+	Group("Term", init=["True"], matches=[Match(wm_class=["st-256color"])]),
+	Group("Files", matches=[Match(wm_class=["Pcmanfm"])]),
+	Group("Games", matches=[Match(wm_class=["Steam"])]),	
+	Group("Games", matches=[Match(wm_class=["Steam"])]),
+	Group("Media", matches=[Match(wm_class=["mpv"]), Match(wm_class=["Gimp"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
 ]
 
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
 layout_theme = {"border_width": 1,
                 "margin": 0,
-                "border_focus": "#8ee2ff",
-                "border_normal": "#207e97"
+                "border_focus": "#626584",
+                "border_normal": "#303030",
                 }
 
 layouts = [
@@ -123,8 +127,8 @@ layouts = [
     # layout.RatioTile(),
      layout.Tile(
 	border_width = 1,
-	border_focus = "#8ee2ff",
-	border_normal = "#207e97",
+	border_focus = "#626584",
+	border_normal = "#303030",
     ),
     # layout.TreeTab(),
     # layout.VerticalTile(),
@@ -132,12 +136,12 @@ layouts = [
 ]
 
 ##### COLORS #####
-colors = [["#03132c", "#03132c"], # panel background
-          ["#616882", "#616882"], # 
+colors = [["#303030", "#303030"], # panel background
+          ["#887386", "#887386"], # Clock Background
           ["#ffffff", "#ffffff"], # text color (white)
-          ["#a0627b", "#a0627b"], # purple background for widgets
-          ["#d65162", "#d65162"], # red backgroun for widgets
-          ["#369baf", "#369baf"], # light-blue background for widgets
+          ["#626584", "#626584"], # background for system monitor widgets
+          ["#704F56", "#704F56"], # background for network  widgets
+          ["#263554", "#263554"], # background for control and update widgets
           ["#e1acff", "#e1acff"]] # 
 
 ##### PROMPT #####
@@ -170,9 +174,9 @@ screens = [
 			background=colors[0],
 			foreground=colors[0],
 		),
-	#	widget.Image(
-	#		filename="~/.config/qtile/pictures/arrow.jpg",
-	#	),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow.jpg",
+		),
 		widget.CPU(
 			format='CPU {load_percent}%',
 			background=colors[4],
@@ -201,9 +205,9 @@ screens = [
                         foreground=colors[2],
                         padding=5,
                 ),
-	#	widget.Image(
-	#		filename="~/.config/qtile/pictures/arrow-blue.jpg",
-	#	),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow-blue.jpg",
+		),
 		widget.TextBox(
 			text="Network ",
 			background=colors[5],
@@ -215,9 +219,9 @@ screens = [
 			foreground=colors[2],
 			padding=4,
 		),
-	#	widget.Image(
-	#		filename="~/.config/qtile/pictures/arrow-purple.jpg",
-	#	),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow-purple.jpg",
+		),
 		widget.TextBox(
 			text="🔊 ",
 			background=colors[3],
@@ -239,6 +243,9 @@ screens = [
 			foreground=colors[2],
 			update_interval=1800,
 			padding=4,
+		),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow-purple2.jpg",
 		),
                 widget.Clock(
 			format='%a %I:%M %p %m-%d-%Y',
