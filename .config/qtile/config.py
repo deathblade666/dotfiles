@@ -86,7 +86,6 @@ group_names = [("General", {'layout': 'tile'}),
                ("Term", {'layout': 'tile'}),
                ("Files", {'layout': 'tile'}),
                ("Games", {'layout': 'tile'}),
-	       ("Media", {'layout': 'tile'}),
 	       ("VM", {'layout': 'tile'}),
 ]
 
@@ -102,11 +101,9 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 groups = [
 	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
-	Group("Term", init=["True"], matches=[Match(wm_class=["st-256color"])]),
-	Group("Files", matches=[Match(wm_class=["Pcmanfm"])]),
-	Group("Games", matches=[Match(wm_class=["Steam"])]),	
+	Group("Term", init=["True"], matches=[Match(title=['~'])]),
+	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"]), Match(wm_class=["Gimp"]), Match(wm_class=["Olive"])]),
 	Group("Games", matches=[Match(wm_class=["Steam"])]),
-	Group("Media", matches=[Match(wm_class=["mpv"]), Match(wm_class=["Gimp"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
 ]
 
@@ -241,7 +238,7 @@ screens = [
 			display_format='{updates}',
 			background=colors[3],
 			foreground=colors[2],
-			update_interval=1800,
+			update_interval=60,
 			padding=4,
 		),
 		widget.Image(
