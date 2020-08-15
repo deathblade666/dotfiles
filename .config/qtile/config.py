@@ -82,11 +82,12 @@ keys = [
 
 
 ##### GROUPS #####
-group_names = [("General", {'layout': 'tile'}),
-               ("Term", {'layout': 'tile'}),
-               ("Files", {'layout': 'tile'}),
-               ("Games", {'layout': 'tile'}),
-	       ("VM", {'layout': 'tile'}),
+group_names = [("General", {'layout': 'Tile'}),
+               ("Term", {'layout': 'Tile'}),
+	       ("IM", {'layout': 'Max'}),
+               ("Files", {'layout': 'Tile'}),
+               ("Games", {'layout': 'Max'}),
+	       ("VM", {'layout': 'Tile'}),
 ]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -102,6 +103,7 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 groups = [
 	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
 	Group("Term", init=["True"], matches=[Match(title=['~'])]),
+	Group("IM", matches=[Match(wm_class=["pulse-sms"])]),
 	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"]), Match(wm_class=["Gimp"]), Match(wm_class=["Olive"])]),
 	Group("Games", matches=[Match(wm_class=["Steam"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
@@ -262,7 +264,8 @@ mouse = [
          start=lazy.window.get_position()),
     Drag([mod], "Button3", lazy.window.set_size_floating(),
          start=lazy.window.get_size()),
-    Click([mod], "Button2", lazy.window.bring_to_front())
+    Click([mod], "Button4", lazy.window.bring_to_front()),
+    Click([mod], "Button2", lazy.window.toggle_floating()),
 ]
 
 dgroups_key_binder = None
