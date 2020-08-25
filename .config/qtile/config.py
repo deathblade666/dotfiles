@@ -105,7 +105,7 @@ groups = [
 	Group("Term", init=["True"], matches=[Match(title=['~'])]),
 	Group("IM", matches=[Match(wm_class=["pulse-sms"])]),
 	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"]), Match(wm_class=["Gimp"]), Match(wm_class=["Olive"])]),
-	Group("Games", matches=[Match(wm_class=["Steam"])]),
+	Group("Games", matches=[Match(wm_class=["Steam"]), Match(wm_class=["Lutris"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
 ]
 
@@ -238,10 +238,10 @@ screens = [
 		),
 		widget.CheckUpdates(
 			display_format='{updates}',
+			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
 			background=colors[3],
 			foreground=colors[2],
-			update_interval=60,
-			padding=4,
+			update_interval=5,
 		),
 		widget.Image(
 			filename="~/.config/qtile/pictures/arrow-purple2.jpg",
