@@ -248,6 +248,7 @@ screens = [
 		),
 		widget.CheckUpdates(
 			display_format='{updates}',
+			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
 			background=colors[3],
 			foreground=colors[2],
 			update_interval=1800,
