@@ -61,7 +61,7 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-    Key([mod], "Return", lazy.spawn("st")),
+    Key([mod], "Return", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -74,10 +74,10 @@ keys = [
     ################################################################
     # Custom Keybindings
     ################################################################
-    Key([mod], "b", lazy.spawn("qutebrowser")),
-    Key([mod], "c", lazy.spawn("chromium")),
-    Key([mod], "e", lazy.spawn("st" + ' -e ranger')),
-    Key([mod], "s", lazy.spawn("steam")),
+    Key([mod], "b", lazy.group["General"].toscreen(toggle=False), lazy.spawn("qutebrowser")),
+    Key([mod], "c", lazy.group["General"].toscreen(toggle=False), lazy.spawn("chromium")),
+    Key([mod], "e", lazy.group["Files"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
+    Key([mod], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
 ]
 
 
@@ -124,11 +124,7 @@ layouts = [
     # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-     layout.Tile(
-	border_width = 1,
-	border_focus = "#626584",
-	border_normal = "#303030",
-    ),
+     layout.Tile(ratio=.50, **layout_theme),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
