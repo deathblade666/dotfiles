@@ -186,6 +186,7 @@ screens = [
 			padding=2,
 		),
 		widget.Battery(
+			low_foreground=colors[2],
 			format='{percent:2.0%}',
 			background=colors[4],
 			foreground=colors[2],
@@ -204,39 +205,39 @@ screens = [
                         padding=5,
                 ),
 		widget.Image(
-			filename="~/.config/qtile/pictures/arrow-blue.jpg",
+			filename="~/.config/qtile/pictures/arrow-purple.jpg",
 		),
 		widget.TextBox(
 			text="Network ",
-			background=colors[5],
+			background=colors[3],
 			foreground=colors[2],
 		),
 		widget.Net(
 			format='{down} ↓↑ {up}',
-			background=colors[5],
+			background=colors[3],
 			foreground=colors[2],
 			padding=4,
 		),
 		widget.Image(
-			filename="~/.config/qtile/pictures/arrow-purple.jpg",
+			filename="~/.config/qtile/pictures/arrow-blue.jpg",
 		),
 		widget.TextBox(
 			text="🔊 ",
-			background=colors[3],
+			background=colors[5],
 			foreground=colors[2],
 		),
 		widget.Volume(
-			background=colors[3],
+			background=colors[5],
 			foreground=colors[2],
 			padding=2,
 		),
 		widget.TextBox(
 			text=" ☀",
-			background=colors[3],
+			background=colors[5],
 			foreground=colors[2],
 		),
 		widget.Backlight(
-			background=colors[3],
+			background=colors[5],
 			foreground=colors[2],
 			backlight_name="intel_backlight",
 			format='{percent: 2.0%}',
@@ -245,13 +246,13 @@ screens = [
 		widget.TextBox(
 			text=" ↻ ",
 			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
-			background=colors[3],
+			background=colors[5],
 			foreground=colors[2],
 		),
 		widget.CheckUpdates(
 			display_format='{updates}',
 			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
-			background=colors[3],
+			background=colors[5],
 			foreground=colors[2],
 			update_interval=1800,
 			padding=4,
