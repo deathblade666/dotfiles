@@ -61,7 +61,7 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-    Key([mod], "Return", lazy.spawn("st")),
+    Key([mod], "Return", lazy.group["Term"].toscreen(), lazy.spawn("st")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -243,6 +243,7 @@ screens = [
 		),
 		widget.TextBox(
 			text=" ↻ ",
+			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
 			background=colors[3],
 			foreground=colors[2],
 		),
