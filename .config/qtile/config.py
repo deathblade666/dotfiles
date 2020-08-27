@@ -74,9 +74,9 @@ keys = [
     ################################################################
     # Custom Keybindings
     ################################################################
-    Key([mod], "b", lazy.spawn("qutebrowser")),
-    Key([mod], "c", lazy.spawn("chromium")),
-    Key([mod], "e", lazy.spawn("st" + ' -e ranger')),
+    Key([mod], "b", lazy.group["General"].toscreen(), lazy.spawn("qutebrowser")),
+    Key([mod], "c", lazy.group["General"].toscreen(), lazy.spawn("chromium")),
+    Key([mod], "e", lazy.group["Files"].toscreen(), lazy.spawn("st" + ' -e ranger')),
 ]
 
 
@@ -98,9 +98,9 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 #######################################
 
 groups = [
-	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
+	Group("General", matches=[Match(wm_class=["Chromium"])]),
 	Group("Term", matches=[Match(title=["~"])]),
-	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"])]),
+	Group("Files", matches=[Match(wm_class=["Pcmanfm"])]),
 	Group("Media", matches=[Match(wm_class=["mpv", "Sxiv"])]),
 ]
 
