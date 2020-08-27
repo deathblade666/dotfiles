@@ -61,7 +61,7 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split()),
-    Key([mod], "Return", lazy.group["Term"].toscreen(), lazy.spawn("st")),
+    Key([mod], "Return", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -74,9 +74,9 @@ keys = [
     ################################################################
     # Custom Keybindings
     ################################################################
-    Key([mod], "b", lazy.group["General"].toscreen(), lazy.spawn("qutebrowser")),
-    Key([mod], "c", lazy.group["General"].toscreen(), lazy.spawn("chromium")),
-    Key([mod], "e", lazy.group["Files"].toscreen(), lazy.spawn("st" + ' -e ranger')),
+    Key([mod], "b", lazy.group["General"].toscreen(toggle=False), lazy.spawn("qutebrowser")),
+    Key([mod], "c", lazy.group["General"].toscreen(toggle=False), lazy.spawn("chromium")),
+    Key([mod], "e", lazy.group["Files"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
 ]
 
 
