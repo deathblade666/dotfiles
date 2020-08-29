@@ -78,16 +78,17 @@ keys = [
     Key([mod], "c", lazy.group["General"].toscreen(toggle=False), lazy.spawn("chromium")),
     Key([mod], "e", lazy.group["Files"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
     Key([mod], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
+    Key([mod], "p", lazy.group["IM"].toscreen(toggle=False), lazy.spawn("pulse-sms")),
 ]
 
 
 ##### GROUPS #####
 group_names = [("General", {'layout': 'Tile'}),
                ("Term", {'layout': 'Tile'}),
-	       ("IM", {'layout': 'Max'}),
+	       ("IM", {'layout': 'Tile'}),
                ("Files", {'layout': 'Tile'}),
-               ("Games", {'layout': 'Max'}),
-	       ("VM", {'layout': 'Tile'}),
+               ("Games", {'layout': 'Tile'}),
+	       ("VM", {'layout': 'TreeTab'}),
 ]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -102,7 +103,7 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 
 groups = [
 	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
-	Group("Term", init=["True"], matches=[Match(title=['~'])]),
+	Group("Term", matches=[Match(title=['~'])]),
 	Group("IM", matches=[Match(wm_class=["pulse-sms"])]),
 	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"]), Match(wm_class=["Gimp"]), Match(wm_class=["Olive"])]),
 	Group("Games", matches=[Match(wm_class=["Steam"]), Match(wm_class=["Lutris"])]),
@@ -117,17 +118,17 @@ layout_theme = {"border_width": 1,
                 }
 
 layouts = [
-    # layout.Max(),
-    # layout.Stack(num_stacks=2),
-    # Try more layouts by unleashing below layouts.
-    # layout.Bsp(),
-    # layout.MonadTall(),
-    # layout.MonadWide(),
-    # layout.RatioTile(),
-     layout.Tile(ratio=.50, **layout_theme),
-    # layout.TreeTab(),
-    # layout.VerticalTile(),
-    # layout.Zoomy(),
+   # layout.Max(),
+   # layout.Stack(),
+   # Try more layouts by unleashing below layouts.
+   # layout.Bsp(),
+   # layout.MonadTall(),
+   # layout.MonadWide(),
+   # layout.RatioTile(),
+    layout.Tile(ratio=.50, **layout_theme),
+    layout.TreeTab(),
+   # layout.VerticalTile(),
+   # layout.Zoomy(),
 ]
 
 ##### COLORS #####
