@@ -105,7 +105,7 @@ groups = [
 	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
 	Group("Term", matches=[Match(title=['~'])]),
 	Group("IM", matches=[Match(wm_class=["pulse-sms"])]),
-	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"]), Match(wm_class=["Gimp"]), Match(wm_class=["Olive"])]),
+	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"])]),
 	Group("Games", matches=[Match(wm_class=["Steam"]), Match(wm_class=["Lutris"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
 ]
@@ -132,13 +132,14 @@ layouts = [
 ]
 
 ##### COLORS #####
+# Sections are listed from left to right. A section is from the begining of one arrow in the bar to the begining of the next.
 colors = [["#303030", "#303030"], # panel background
-          ["#887386", "#887386"], # Clock Background
-          ["#ffffff", "#ffffff"], # text color (white)
-          ["#626584", "#626584"], # background for system monitor widgets
-          ["#704F56", "#704F56"], # background for network  widgets
-          ["#263554", "#263554"], # background for control and update widgets
-          ["#e1acff", "#e1acff"]] # 
+          ["#887386", "#887386"], # fifth section
+          ["#626584", "#626584"], # fourth section
+          ["#704f56", "#704f56"], # third section
+          ["#3a517d", "#3a517d"], # second section
+          ["#263554", "#263554"], # first section
+          ["#ffffff", "#ffffff"]] # Text Color (White) 
 
 ##### PROMPT #####
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
@@ -163,7 +164,7 @@ screens = [
                         linewidth=0,
                         padding=6,
                         background=colors[0],
-                        foreground=colors[2],
+                        foreground=colors[6],
                 ),
                 widget.GroupBox(),
 		widget.WindowName(
@@ -175,44 +176,60 @@ screens = [
 		),
 		widget.CPU(
 			format='CPU {load_percent}%',
-			background=colors[4],
-			foreground=colors[2],
+			background=colors[5],
+			foreground=colors[6],
 			padding=2,
 		),
 		widget.TextBox(
 			text=" Thermal",
-			background=colors[4],
-			foreground=colors[2],
+			background=colors[5],
+			foreground=colors[6],
 			padding=2,
 		),
 		widget.ThermalSensor(
-			background=colors[4],
-			foreground=colors[2],
+			background=colors[5],
+			foreground=colors[6],
 			padding=2,
 		),
                 widget.TextBox(
                         text=" RAM",
-                        background=colors[4],
-                        foreground=colors[2],
+                        background=colors[5],
+                        foreground=colors[6],
                         padding=2,
                ),
                widget.Memory(
-                        background=colors[4],
-                        foreground=colors[2],
+                        background=colors[5],
+                        foreground=colors[6],
                         padding=5,
                 ),
 		widget.Image(
 			filename="~/.config/qtile/pictures/arrow-blue.jpg",
 		),
 		widget.TextBox(
+			text="Free Space",
+			background=colors[4],
+			foreground=colors[6],
+			padding=2,
+		),
+		widget.DF(
+			background=colors[4],
+			foreground=colors[6],
+			padding=5,
+			update_interval=5,
+			visible_on_warn=False,
+		),
+		widget.Image(
+			filename="~/.config/qtile/pictures/arrow-red.jpg",
+		),
+		widget.TextBox(
 			text="Network ",
-			background=colors[5],
-			foreground=colors[2],
+			background=colors[3],
+			foreground=colors[6],
 		),
 		widget.Net(
 			format='{down} ↓↑ {up}',
-			background=colors[5],
-			foreground=colors[2],
+			background=colors[3],
+			foreground=colors[6],
 			padding=4,
 		),
 		widget.Image(
@@ -220,24 +237,24 @@ screens = [
 		),
 		widget.TextBox(
 			text="🔊 ",
-			background=colors[3],
-			foreground=colors[2],
+			background=colors[2],
+			foreground=colors[6],
 		),
 		widget.Volume(
-			background=colors[3],
-			foreground=colors[2],
+			background=colors[2],
+			foreground=colors[6],
 			padding=2
 		),
 		widget.TextBox(
 			text=" ↻ ",
-			background=colors[3],
-			foreground=colors[2],
+			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
+			background=colors[2],
+			foreground=colors[6],
 		),
 		widget.CheckUpdates(
 			display_format='{updates}',
-			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
-			background=colors[3],
-			foreground=colors[2],
+			background=colors[2],
+			foreground=colors[6],
 			update_interval=5,
 		),
 		widget.Image(
@@ -246,7 +263,7 @@ screens = [
                 widget.Clock(
 			format='%a %I:%M %p %m-%d-%Y',
 			background=colors[1],
-			foreground=colors[2],
+			foreground=colors[6],
 		),
             ],
             24,
