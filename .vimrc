@@ -23,6 +23,7 @@ colorscheme dracula
 " Use 256 colours (Use this setting only if your terminal supports 256 colours)
 set t_Co=256
 
+:highlight Normal ctermbg=03132c
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " =>  Enable numbered rows
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
