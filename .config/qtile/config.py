@@ -78,7 +78,9 @@ keys = [
     Key([mod], "c", lazy.group["General"].toscreen(toggle=False), lazy.spawn("chromium")),
     Key([mod], "e", lazy.group["Files"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
     Key([mod], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
-    Key([mod], "p", lazy.group["IM"].toscreen(toggle=False), lazy.spawn("pulse-sms")),
+    Key([mod], "m", lazy.group["IM"].toscreen(toggle=False), lazy.spawn("pulse-sms")),
+    Key([mod], "p", lazy.spawn("./.config/scripts/qtile/screenshot.sh")),
+    Key([mod], "f", lazy.group["General"].toscreen(toggle=False), lazy.spawn("firefox")),
 ]
 
 
@@ -113,8 +115,8 @@ groups = [
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
 layout_theme = {"border_width": 1,
                 "margin": 0,
-                "border_focus": "#626584",
-                "border_normal": "#303030",
+                "border_focus": "#e78aba",
+                "border_normal": "#032541",
                 }
 
 layouts = [
@@ -133,12 +135,12 @@ layouts = [
 
 ##### COLORS #####
 # Sections are listed from left to right. A section is from the begining of one arrow in the bar to the begining of the next.
-colors = [["#303030", "#303030"], # panel background
-          ["#887386", "#887386"], # fifth section
-          ["#626584", "#626584"], # fourth section
-          ["#704f56", "#704f56"], # third section
-          ["#3a517d", "#3a517d"], # second section
-          ["#263554", "#263554"], # first section
+colors = [["#032541", "#032541"], # panel background
+          ["#0c6583", "#0c6583"], # fifth section
+          ["#5a3b5d", "#5a3b5d"], # fourth section
+          ["#86618d", "#86618d"], # third section
+          ["#903350", "#903350"], # second section
+          ["#e784ba", "#e78aba"], # first section
           ["#ffffff", "#ffffff"]] # Text Color (White) 
 
 ##### PROMPT #####
@@ -252,10 +254,11 @@ screens = [
 			foreground=colors[6],
 		),
 		widget.CheckUpdates(
-			display_format='{updates}',
+			display_format=' {updates} ',
 			background=colors[2],
 			foreground=colors[6],
 			update_interval=5,
+			padding=5,
 		),
 		widget.Image(
 			filename="~/.config/qtile/pictures/arrow-purple2.jpg",
@@ -288,7 +291,7 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
-floating_layout = layout.Floating(float_rules=[
+floating_layout = layout.Floating(**layout_theme, float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
     {'wmclass': 'confirm'},
     {'wmclass': 'dialog'},
@@ -304,6 +307,8 @@ floating_layout = layout.Floating(float_rules=[
     {'wname': 'branchdialog'},  # gitk
     {'wname': 'pinentry'},  # GPG key password entry
     {'wmclass': 'ssh-askpass'},  # ssh-askpass
+    {'wmclass': 'wine'},
+    {'wname': 'vortex'},
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"

@@ -12,12 +12,12 @@ configuration {
 }
 
 * {
-	background-color:            #303030;
+	background-color:            #0c6583;
 	text-color:                  #ffffff;
-	selbg:                       #626584;
-	actbg:                       #262626;
-	urgbg:                       #e53935;
-	winbg:			     #626584;
+	selbg:                       #e78aba;
+	actbg:                       #4f77ab;
+	urgbg:                       #4f77ab;
+	winbg:			     #ffffff;
 
 	selected-normal-foreground:  @winbg;
 	normal-foreground:           @text-color;

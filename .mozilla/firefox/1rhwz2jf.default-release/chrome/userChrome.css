@@ -1,0 +1,5 @@
+#urlbar-container {width:0px!important;min-width:0px!important;max-width:0px!important;}
+#urlbar .textbox-input-box {display:none!important;}
+#TabsToolbar, .tabbrowser-tab {max-height:0px !important;}
+#forward-button[disabled="true"]{display: none!important;}
+#back-button[disabled="true"]{display: none!important;}
