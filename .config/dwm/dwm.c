@@ -2152,6 +2152,7 @@ main(int argc, char *argv[])
 #endif /* __OpenBSD__ */
 	scan();
 	run();
+	runAutostart();
 	cleanup();
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
