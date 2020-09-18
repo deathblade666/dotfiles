@@ -1382,8 +1382,7 @@ run(void)
 			handler[ev.type](&ev); /* call handler */
 }
 
-void 
-runAutostart(void) {
+static void runAutostart(void) {
 	system("cd ~/.config/scripts/dwm; ./autostart.sh &");
 }
 
