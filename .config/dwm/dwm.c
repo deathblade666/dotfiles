@@ -1,4 +1,4 @@
-/* See LICENSE file for copyright and license details.
+/* ee LICENSE file for copyright and license details.
  *
  * dynamic window manager is designed like any other X client as well. It is
  * driven through handling X events. In contrast to other X clients, a window
@@ -1382,7 +1382,8 @@ run(void)
 			handler[ev.type](&ev); /* call handler */
 }
 
-static void runAutostart(void) {
+void 
+runAutostart(void) {
 	system("cd ~/.config/scripts/dwm; ./autostart.sh &");
 }
 
