@@ -1,2 +1,2 @@
 #!/bin/bash
-hsetroot -full $HOME/Pictures/rice-wall.jpg
+hsetroot -full $HOME/Pictures/wallpapers/rice-wall.jpg

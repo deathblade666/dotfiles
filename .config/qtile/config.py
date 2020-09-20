@@ -74,8 +74,7 @@ keys = [
     ################################################################
     # Custom Keybindings
     ################################################################
-    Key([mod], "b", lazy.group["General"].toscreen(toggle=False), lazy.spawn("qutebrowser")),
-    Key([mod], "c", lazy.group["General"].toscreen(toggle=False), lazy.spawn("chromium")),
+    Key([mod], "b", lazy.group["General"].toscreen(toggle=False), lazy.spawn("firefox")),
     Key([mod], "e", lazy.group["Files"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
 ]
 
