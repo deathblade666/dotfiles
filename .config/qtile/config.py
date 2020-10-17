@@ -74,13 +74,12 @@ keys = [
     ################################################################
     # Custom Keybindings
     ################################################################
-    Key([mod], "b", lazy.group["General"].toscreen(toggle=False), lazy.spawn("qutebrowser")),
-    Key([mod], "c", lazy.group["General"].toscreen(toggle=False), lazy.spawn("chromium")),
+    Key([mod], "c", lazy.spawn("chromium")),
     Key([mod], "e", lazy.group["Files"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
     Key([mod], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
     Key([mod], "m", lazy.group["IM"].toscreen(toggle=False), lazy.spawn("pulse-sms")),
     Key([mod], "p", lazy.spawn("./.config/scripts/qtile/screenshot.sh")),
-    Key([mod], "f", lazy.group["General"].toscreen(toggle=False), lazy.spawn("firefox")),
+    Key([mod], "f", lazy.spawn("firefox")),
 ]
 
 
@@ -91,6 +90,7 @@ group_names = [("General", {'layout': 'Tile'}),
                ("Files", {'layout': 'Tile'}),
                ("Games", {'layout': 'Tile'}),
 	       ("VM", {'layout': 'TreeTab'}),
+	       ("Other", {'layout': 'Tile'}),
 ]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -104,12 +104,13 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 #######################################
 
 groups = [
-	Group("General", matches=[Match(wm_class=["qutebrowser", "Chromium"])]),	
+	Group("General", matches=[Match(wm_class=["firefox", "Chromium"])]),	
 	Group("Term", matches=[Match(title=['~'])]),
 	Group("IM", matches=[Match(wm_class=["pulse-sms"])]),
 	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"])]),
 	Group("Games", matches=[Match(wm_class=["Steam"]), Match(wm_class=["Lutris"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
+	Group("Other", matches=[Match(wm_class=["Barrier"])]),
 ]
 
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
@@ -157,11 +158,9 @@ extension_defaults = widget_defaults.copy()
 
 
 ##### WIDGETS #####
-
-screens = [
-    Screen(
-        top=bar.Bar(
-            [
+def init_widgets_list():
+    widgets_list = [
+            
 		widget.Sep(
                         linewidth=0,
                         padding=6,
@@ -268,12 +267,23 @@ screens = [
 			background=colors[1],
 			foreground=colors[6],
 		),
-            ],
-            24,
-        ),
-    ),
-]
+	    ]
+    return widgets_list
 
+
+def init_widgets_screen2():
+    widgets_screen2 = init_widgets_list()
+    return widgets_screen2                       # Monitor 2 will display all widgets in widgets_list
+
+def init_screens():
+    return [
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20)),
+            ]
+
+if __name__ in ["config", "__main__"]:
+    screens = init_screens()
+    widgets_list = init_widgets_list()
+    widgets_screen2 = init_widgets_screen2()
 
 # Drag floating layouts.
 mouse = [
