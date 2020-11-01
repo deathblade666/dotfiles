@@ -2,7 +2,6 @@
 
 /* custom declarations */
 
-
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -30,15 +29,15 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-    	{ "firefox",  NULL,       NULL,       1,	    0,           -1 },
-	{ "Chromium", NULL,	  NULL,	      1,	    0,		 -1 },
-	{ "st-256color", NULL,    NULL,       2,	    0,		 -1 },
-    	{ "Pcmanfm",  NULL,	  NULL,	      1 << 2,	    0,		 -1 },
-	{ "Steam",    NULL,	  NULL,	      1 << 3,	    0,		 -1 },
+    	{ "firefox",	 NULL,    NULL,       1,	    0,           -1 },
+	{ "Chromium",	 NULL,	  NULL,	      1,	    0,		 -1 },
+	{ "st-256color", NULL,	  NULL,       2,	    0,		 -1 },
+    	{ "Pcmanfm",	 NULL,	  NULL,	      1 << 2,	    0,		 -1 },
+    	{ "Steam",	 NULL, "Friends List",1 << 3,	    0,		  1 },
+	{ "Steam",	 NULL,	  NULL,	      1 << 3,	    0,		 -1 },
 	{ "Virt-manager", NULL,	  NULL,	      1 << 4,	    0,		 -1 },
-	{ "Gimp",     NULL,       NULL,       1 << 5,       0,           -1 },
-	{ "Barrier",  NULL,	  NULL,	      1 << 5,	    0,		 -1 },
-	{ "Steam",    NULL,	  "Friends List", 1 << 3,   0,		  0 },
+	{ "Gimp",	 NULL,    NULL,       1 << 5,       0,           -1 },
+	{ "Barrier",	 NULL,	  NULL,	      1 << 5,	    0,		  1 },
 
 };
 
@@ -72,7 +71,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *games[] = { "steam", NULL };
 static const char *fm[] = { "st", "ranger", NULL }; 
-static const char *screenshot[] = { "maim", "-su", "/home/deathmasia/Pictures/Screenshot_$(date +%m%d%G_%I%M%S).png", "--quality 1" };
+static const char *screenshot[] = { "maim", "-su", "/home/deathmasia/Pictures/Screenshot_$(date +%m%d%G_%I%M%S).png", "--quality 1", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
