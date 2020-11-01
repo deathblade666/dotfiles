@@ -71,11 +71,11 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *games[] = { "steam", NULL };
 static const char *fm[] = { "st", "ranger", NULL }; 
-static const char *screenshot[] = { "maim", "-sum", "1", "/home/deathmasia/Pictures/Screenshot_$(date +%m%d%G_%I%M%S).png", NULL };
+static const char *screenshot[] = { "/home/deathmasia/.config/scripts/qtile/screenshot.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_f,	   spawn,	   {.v = browser } }, 
 	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = games } },
