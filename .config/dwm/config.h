@@ -71,7 +71,7 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "st", NULL };
 static const char *games[] = { "steam", NULL };
 static const char *fm[] = { "st", "ranger", NULL }; 
-static const char *screenshot[] = { "maim", "-su", "/home/deathmasia/Pictures/Screenshot_$(date +%m%d%G_%I%M%S).png", "--quality 1", NULL };
+static const char *screenshot[] = { "maim", "-sum", "1", "/home/deathmasia/Pictures/Screenshot_$(date +%m%d%G_%I%M%S).png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
