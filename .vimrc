@@ -33,4 +33,12 @@ set number
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mouse Scrolling
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set mouse=nicr
+set mouse=a
+
+
+set autoindent
+set incsearch
+set shiftwidth=4
+set softtabstop=4 
+set smarttab
+set smartindent

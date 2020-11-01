@@ -1382,6 +1382,7 @@ run(void)
 			handler[ev.type](&ev); /* call handler */
 }
 
+
 static void runAutostart(void) {
 	system("cd ~/.config/scripts/dwm; ./autostart.sh &");
 }
@@ -2150,8 +2151,8 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
-	run();
 	runAutostart();
+	run();
 	cleanup();
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
