@@ -1,8 +1,7 @@
 #!/bin/bash
+
+batter=cat /sys/class/power_supply/BAT0/capacity
+
 exec hsetroot -full ~/wallpapers/arch-wallpaper.png &
-exec picom &
-# Statusbar loop
-while true; do
-   xsetroot -name "$( date +"%F %R" )"
-   sleep 1m    # Update time every minute
-done &
+# Statusbar loo
+exec ~/.config/scripts/dwm/bar.sh &
