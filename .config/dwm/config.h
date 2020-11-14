@@ -21,7 +21,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "General", "Terminal", "Files", "Games", "VM", "Other", };
+static const char *tags[] = { "General", "Terminal", "{ }", "Games", "VM", "Other", };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -32,7 +32,8 @@ static const Rule rules[] = {
     	{ "firefox",	 NULL,    NULL,       1,	    0,           -1 },
 	{ "Chromium",	 NULL,	  NULL,	      1,	    0,		 -1 },
 	{ "st-256color", NULL,	  NULL,       2,	    0,		 -1 },
-    	{ "Pcmanfm",	 NULL,	  NULL,	      1 << 2,	    0,		 -1 },
+    	{ "jetbrains-studio",     NULL,	      NULL,         1 << 2,       0,    -1 },
+	{ "VSCodium",	 NULL,	  NULL,	      1 << 2,	    0,	         -1 },
     	{ "Steam",	 NULL, "Friends List",1 << 3,	    0,		  1 },
 	{ "Steam",	 NULL,	  NULL,	      1 << 3,	    0,		 -1 },
 	{ "Virt-manager", NULL,	  NULL,	      1 << 4,	    0,		 -1 },
@@ -72,6 +73,7 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *games[] = { "steam", NULL };
 static const char *fm[] = { "st", "ranger", NULL }; 
 static const char *screenshot[] = { "/home/deathmasia/.config/scripts/qtile/screenshot.sh", NULL };
+static const char *android[] = {"android-studio", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -81,6 +83,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_s,	   spawn,	   {.v = games } },
 	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   {.v = fm } },
 	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = screenshot } },
+	{ MODKEY|ShiftMask,		XK_a,	   spawn,	   {.v = android } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },

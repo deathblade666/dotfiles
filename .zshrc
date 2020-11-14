@@ -3,12 +3,12 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/deathmasia/.oh-my-zsh"
-
+export _JAVA_AWT_WM_NONREPARTENING=1
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="random"
 eval `dircolors ~/.solarized/dircolors`
 
 # Set list of themes to pick from when loading at random
@@ -100,8 +100,6 @@ source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 USER=''
-alias sys-update='sudo pacman -Syu'
-alias update='sudo pacman -Syy'
 alias ..='cd ..'
 alias zshconf='vim ~/.zshrc'
 alias omzconf='vim ~/.oh-my-zsh/oh-my-zsh.sh'
@@ -112,7 +110,8 @@ alias dwm='xinit dwm'
 alias i3='xinit i3'
 alias qtileconf='vim ~/.config/qtile/config.py'
 alias i3blocks='vim ~/.conifg/i3blocks/config'
-alias pac-install='sudo pacman -S'
 alias ls='ls -lagh'
-alias clear='clear && neofetch --color_blocks off'
+alias clear='clear && zsh'
 alias poweroff='sudo shutdown -h now'
+alias update='sudo pacman -Syu && yay -Syu'
+alias reboot='sudo reboot'
