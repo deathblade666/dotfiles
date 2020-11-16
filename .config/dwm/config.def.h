@@ -28,17 +28,17 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-    	{ "firefox",	 NULL,    NULL,       1,	    0,           -1 },
-	{ "Chromium",	 NULL,	  NULL,	      1,	    0,		 -1 },
-	{ "st-256color", NULL,	  NULL,       2,	    0,		 -1 },
-    	{ "jetbrains-studio",     NULL,	      NULL,         1 << 2,       0,    -1 },
-	{ "VSCodium",	 NULL,	  NULL,	      1 << 2,	    0,	         -1 },
-    	{ "Steam",	 NULL, "Friends List",1 << 3,	    0,		  1 },
-	{ "Steam",	 NULL,	  NULL,	      1 << 3,	    0,		 -1 },
-	{ "Virt-manager", NULL,	  NULL,	      1 << 4,	    0,		 -1 },
-	{ "Gimp",	 NULL,    NULL,       1 << 5,       0,           -1 },
-	{ "Barrier",	 NULL,	  NULL,	      1 << 5,	    0,		  1 },
+	/* class                instance    title       tags mask     isfloating   monitor */
+    	{ "firefox",	          NULL,      NULL,          1,	         0,           -1 },
+	{ "Chromium",	          NULL,      NULL,	    1,	         0,	      -1 },
+	{ "st-256color",          NULL,      NULL,          2,           0,	      -1 },
+    	{ "jetbrains-studio",     NULL,	     NULL,       1 << 2,         0,           -1 },
+	{ "VSCodium",	          NULL,      NULL,       1 << 2,	 0,           -1 },
+    	{ "Steam",	        "Steam", "Friends List", 1 << 3,         0,	       1 },
+	{ "Steam",	        "Steam",  "Steam",       1 << 3,	 0,	       0 },
+	{ "Virt-manager",         NULL,      NULL,       1 << 4,	 0,	      -1 },
+	{ "Gimp",	          NULL,      NULL,       1 << 5,         0,           -1 },
+	{ "Barrier",      	  NULL,	     NULL,       1 << 5,	 0,	       1 },
 
 };
 
