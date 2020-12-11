@@ -1,4 +1,5 @@
 numlockx &
+xset s off &
 export _JAVA_AWT_WM_NONREPARENTING=1
 # Here qtile is kept as default
 session=${1:-qtile}
