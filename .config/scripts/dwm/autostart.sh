@@ -1,7 +1,7 @@
 #!/bin/zsh
 exec hsetroot -full ~/Pictures/wallpapers/Wolf.jpg &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
+picom --experimental-backend &
 
 
 # Statusbar loop
@@ -32,5 +32,5 @@ bar()  (\
 
 while :; do
     xsetroot -name "$(bar | tr '\n' ' ')"
-    sleep 15s
+    sleep 1s
 done &
