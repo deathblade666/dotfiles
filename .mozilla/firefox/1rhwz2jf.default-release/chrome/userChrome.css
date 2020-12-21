@@ -1,20 +1,7 @@
-/*#urlbar-container {width:0px!important;min-width:0px!important;max-width:0px!important;}
-#urlbar .textbox-input-box {display:none!important;}  
-#TabsToolbar, .tabbrowser-tab {max-height:30px !important;}
-#nav-bar { display: none !important; }
-*/
-
-
-
-
-/* funcionando melhor */
-
-
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
 
 * { 
-    /* -------------------- Customization  -------------------- */
 }
 
 
@@ -24,9 +11,6 @@
 #TabsToolbar .tabbrowser-tab .tab-stack,
 #TabsToolbar .tabbrowser-tab .tab-background,
 #TabsToolbar .tabbrowser-tab .tab-content {
-     /*  border-top-left-radius: 18px !important;
-              border-top-right-radius: 18px !important;
-		   border-bottom-left-radius: 18px !important; */
 		       height: 30px;
 }
 
@@ -47,7 +31,6 @@
 	   tab:not(:active) .tab-background {
 	           transition: background-color var(--animation-speed) !important;
 	   }
-	   /* deixar a aba ativa em destaque e o resto desfocado */
 	   :root:not([customizing]) :hover > .tabbrowser-tab:not(:hover){
 	           filter: blur(3px) brightness(50%);
 		       transition: blur, ease 0.5s !important;
@@ -61,7 +44,6 @@
 
 	   }
 
-	   /* sumir com o nome da aba depois de um tempo */
 
 
 #tabbrowser-tabs .tab-label-container[customizing]{
@@ -107,14 +89,11 @@ tab:not([selected]):hover .tab-background {
 
 
 
-/* Removal of black bottom 1px line */
 #navigator-toolbox::after {
     display: none !important;
 }
 
 
-/*-min max close  buttons size */
-/* adapt size to your needs */
 .titlebar-button>.toolbarbutton-icon {
 	height: 17px !important;
 	    min-height: 17px !important;
@@ -122,7 +101,6 @@ tab:not([selected]):hover .tab-background {
 		    min-width: 17px !important;
 }
 
-/* spaces between buttons */
 .titlebar-button {
 	padding-left: 10px !important;
 	    padding-right: 15px !important;
@@ -130,8 +108,6 @@ tab:not([selected]):hover .tab-background {
 }
 
 
-/* isso  pra mudar os cones de fechar minimizar e maximizar, que to na pasta do userChrome*/
-/* minimize button */
     .titlebar-min {
 	      list-style-image: url("active_min.png") !important;
 	            background-color: transparent !important;
@@ -142,7 +118,6 @@ tab:not([selected]):hover .tab-background {
 				            background-color: transparent !important;
 					        }
 
-						    /* maximize button */
 						        .titlebar-max {
 							          list-style-image: url("active_max.png") !important;
 								      }
@@ -152,7 +127,6 @@ tab:not([selected]):hover .tab-background {
 										          background-color: transparent !important;
 											      }
 
-											          /* close button */
 												      .titlebar-close {
 													        list-style-image: url("active_close.png") !important;
 														    }
@@ -162,19 +136,11 @@ tab:not([selected]):hover .tab-background {
 																        background-color: transparent !important;
 																	    }
 
-																	    /*==================================================*/
-
-																	    /* barra url e de pesquisa*/
-
-#urlbar {
-   /* border-radius: calc(1px + var(--button-corner-rounding)) !important;
-        height: 35px; */
-}
 
 
 
 
-/* style address bar */
+
 #urlbar-container *:not(#identity-box) {
     border-color: transparent !important;
         box-shadow: none !important;
@@ -288,7 +254,6 @@ tab:not([selected]):hover .tab-background {
 .urlbar-icon-wrapper:hover,
 [anonid=urlbar-go-button]:hover {
         background-color: #FF5340 !important;
-	   /* border-radius: --button-corner-rounding !important; */
 }
 
 
@@ -326,10 +291,8 @@ tab:not([selected]):hover .tab-background {
 
 
 
-/* pra alterar pose altura do Minimizar maximizar e fechar */
 #TabsToolbar > .titlebar-buttonbox-container{
 
-/* alguma coisa aqui*/
 
 }
 
@@ -349,7 +312,6 @@ tab:not([selected]):hover .tab-background {
     opacity: 1 !important;
 }
 
-/* menu de contexto*/
 
 
 menu,
@@ -366,8 +328,6 @@ menu[_moz-menuactive="true"]:not([disabled="true"]),
 menuitem[_moz-menuactive="true"]:not([disabled="true"]), 
 menucaption[_moz-menuactive="true"]:not([disabled="true"]) {
         background-color: #FF5340 !important;
-	   /* border-radius: 25px;*/
-	       /* border-bottom-right-radius: 0px;*/
 }
 
 menu[disabled="true"][_moz-menuactive="false"], 
@@ -475,7 +435,6 @@ menu:not(.subviewbutton) > .menu-right image {
 																																					    }
 }
 
-/* tirar a caixinha antes das tabs*/
 .titlebar-spacer[type="pre-tabs"],
 .titlebar-spacer[type="post-tabs"] {
           display: none !important;
@@ -508,7 +467,6 @@ menu:not(.subviewbutton) > .menu-right image {
 	    --autocomplete-popup-highlight-background: #FF5340 !important;
 }
 
-/* Removes white loading page */
 
 @-moz-document url(about:blank), url(about:newtab), url(about:home) {
         html:not(#ublock0-epicker), html:not(#ublock0-epicker) body, #newtab-customize-overlay {
@@ -516,7 +474,6 @@ menu:not(.subviewbutton) > .menu-right image {
 		      }
 		        }
 			  
-			  /* This removes the tab separators */
 			  .tabbrowser-tab::before,
 			  .tabbrowser-tab::after {
 			          display: none !important;
@@ -527,20 +484,15 @@ menu:not(.subviewbutton) > .menu-right image {
 			  }
 
 			  .tabbrowser-tab {
-			          /* transition: color 0.25s !important; */
 				      text-align: center !important;
-				          /*display: inherit;*/
 					      justify-content: center;
 					          align-items: center;
 			  }
 
 			  .tabbrowser-tab[selected="true"], .tab-label-container[selected="true"] {
 			        color: #FF5340 !important;
-				  /* background-color: var(--color3) !important; */
-				    /* background-image: linear-gradient(var(--color3), var(--color3)) !important; */
 			  }
 
-			  /* fonte */
 
 
 			  menubar,
@@ -558,7 +510,6 @@ menu:not(.subviewbutton) > .menu-right image {
 
 			  }
 
-			  /* hide navbar */
 #nav-bar:not([customizing]){
 			    visibility: visible;
 				margin-top: -42px;
@@ -570,11 +521,6 @@ menu:not(.subviewbutton) > .menu-right image {
 
 
 
-/* 
-keep visible when urlbar is focused
-navbar is hovered
-or menubar/customization is open
-*/
 
 
 :root:not([customizing]) :hover > #nav-bar,
@@ -596,7 +542,6 @@ or menubar/customization is open
 	        opacity: 100;
 }
 
-/* hide scrollbar  */
 
 :-moz-any(#content,#appcontent) browser{
      margin-right:-17px!important;
