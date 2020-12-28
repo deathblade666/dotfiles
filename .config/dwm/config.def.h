@@ -1,6 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* custom declarations */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -81,6 +82,9 @@ static const char *android[] = {"android-studio", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
+	{ 0,		  XF86XK_AudioRaiseVolume, spawn,          SHCMD("amixer -c 0 set Headphone 1%+") },
+        { 0,	          XF86XK_AudioLowerVolume, spawn,	   SHCMD("amixer -c 0 set Headphone 1%-") },
+	{ 0,		        XF86XK_AudioMute,  spawn,	   SHCMD("amixer -D pulse set Master 1+ toggle") },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,		XK_f,	   spawn,	   {.v = browser } }, 

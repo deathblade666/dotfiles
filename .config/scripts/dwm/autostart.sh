@@ -2,7 +2,7 @@
 exec hsetroot -full ~/Pictures/wallpapers/Wolf.jpg &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 # picom --experimental-backend &
-barriers -f --no-tray --debug INFO --name ArchLinux --enable-crypto -c /tmp/Barrier.oivgih --address :24800 &
+barriers -f --no-tray --debug INFO --name ArchLinux --enable-crypto -c /home/deathmasia/.config/barrier/Barrier --address :24800 &
 
 # Statusbar loop
 
