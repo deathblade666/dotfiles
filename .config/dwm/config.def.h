@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "General", "Terminal", "Development", "Games", "VM", "Other", };
+static const char *tags[] = { "General", "Terminal", "Music", "Games", "VM", "Other", };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -33,13 +33,13 @@ static const Rule rules[] = {
     	{ "firefox",	          NULL,      NULL,          1,	         0,           -1 },
 	{ "Chromium",	          NULL,      NULL,	    1,	         0,	      -1 },
 	{ "st-256color",          NULL,      NULL,          2,           0,	      -1 },
-    	{ "jetbrains-studio",     NULL,	     NULL,       1 << 2,         0,           -1 },
 	{ "VSCodium",	          NULL,      NULL,       1 << 2,	 0,           -1 },
     	{ "Steam",	        "Steam", "Friends List", 1 << 3,         0,	       1 },
 	{ "Steam",	        "Steam",  "Steam",       1 << 3,	 0,	       0 },
 	{ "Virt-manager",         NULL,      NULL,       1 << 4,	 0,	      -1 },
 	{ "Gimp",	          NULL,      NULL,       1 << 5,         0,           -1 },
 	{ "Barrier",      	  NULL,	     NULL,       1 << 5,	 0,	       1 },
+	{ "Deadbeef",		  NULL,	     NULL,	 1 << 2,	 0,	       1 },
 
 };
 
@@ -52,11 +52,11 @@ static const Layout layouts[] = {
 	/* symbol     arrange function */ 
 	/* no layout function means floating behavior */
 	/* first entry is default*/
-	{ "[ =[M]= ]", centeredmaster },
-	{ "[ [M]= ]",      tile },
+	{ "|M|", centeredmaster },
+	{ "M=",      tile },
 	{ "[F]",      NULL },
 	{ "[M]",      monocle },
-	{ "[ =[F]= ]", centeredfloatingmaster },
+	{ "|FM|", centeredfloatingmaster },
 };
 
 /* key definitions */
