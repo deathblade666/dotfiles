@@ -11,7 +11,7 @@
 #TabsToolbar .tabbrowser-tab .tab-stack,
 #TabsToolbar .tabbrowser-tab .tab-background,
 #TabsToolbar .tabbrowser-tab .tab-content {
-		       height: 30px;
+		       height: 32px;
 }
 
 
@@ -318,7 +318,7 @@ menu,
 menuitem, 
 menucaption {
         -moz-appearance: none !important;
-	    height: 36px !important;
+	    height: 32px !important;
 	        background-color: #282828;
 		    color: white;
 
@@ -512,7 +512,7 @@ menu:not(.subviewbutton) > .menu-right image {
 
 #nav-bar:not([customizing]){
 			    visibility: visible;
-				margin-top: -42px;
+				margin-top: -39px;
 				    transition-delay: 1s;
 				        filter: alpha(opacity=0);
 					    opacity: 0;
