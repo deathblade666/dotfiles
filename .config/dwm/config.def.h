@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "General", "Terminal", "Music", "Games", "VM", "Other", };
+static const char *tags[] = { "General", "Terminal", "Development", "Music", "Games", "VM", "Other", };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -31,15 +31,15 @@ static const Rule rules[] = {
 	 */
 	/* class                instance    title       tags mask     isfloating   monitor */
     	{ "qutebrowser",          NULL,      NULL,          1,	         0,           -1 },
-	{ "Chromium",	          NULL,      NULL,	    1,	         0,	      -1 },
 	{ "st-256color",          NULL,      NULL,          2,           0,	      -1 },
 	{ "VSCodium",	          NULL,      NULL,       1 << 2,	 0,           -1 },
-    	{ "Steam",	        "Steam", "Friends List", 1 << 3,         0,	       1 },
-	{ "Steam",	        "Steam",  "Steam",       1 << 3,	 0,	       0 },
+    	{ "Steam",	        "Steam", "Friends List", 1 << 4,         0,	       1 },
+	{ "Steam",	        "Steam",  "Steam",       1 << 4,	 0,	       0 },
 	{ "Virt-manager",         NULL,      NULL,       1 << 4,	 0,	      -1 },
 	{ "Gimp",	          NULL,      NULL,       1 << 5,         0,           -1 },
 	{ "Barrier",      	  NULL,	     NULL,       1 << 5,	 0,	       1 },
-	{ "Deadbeef",		  NULL,	     NULL,	 1 << 2,	 0,	       1 },
+	{ "Deadbeef",		  NULL,	     NULL,	 1 << 3,	 0,	       1 },
+	{ "jetbrains-studio",     NULL,      NULL,       1 << 2,         0,            0 },
 
 };
 
