@@ -60,34 +60,34 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.spawn("alacritty")),
-    Key([mod], "Return", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st")),
+    Key([mod, "shift"], "Return", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
-    Key([mod], "w", lazy.window.kill()),
+    Key([mod, "shift"], "c", lazy.window.kill()),
 
-    Key([mod, "control"], "r", lazy.restart()),
-    Key([mod, "control"], "q", lazy.shutdown()),
+    Key([mod, "shift"], "r", lazy.restart()),
+    Key([mod, "shift"], "q", lazy.shutdown()),
     Key([mod], "r", lazy.spawn("rofi -modi run#ssh -show run")),
 
     ################################################################
     # Custom Keybindings
     ################################################################
-    Key([mod], "c", lazy.spawn("chromium")),
-    Key([mod], "e", lazy.group["Files"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
-    Key([mod], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
-    Key([mod], "m", lazy.group["IM"].toscreen(toggle=False), lazy.spawn("pulse-sms")),
-    Key([mod], "p", lazy.spawn("./.config/scripts/qtile/screenshot.sh")),
-    Key([mod], "f", lazy.spawn("firefox")),
+    Key([mod, "shift"], "e", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
+    Key([mod, "shift"], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
+    Key([mod, "shift"], "m", lazy.group["General"].toscreen(toggle=False), lazy.spawn("pulse-sms")),
+    Key([mod, "shift"], "p", lazy.spawn("./.config/scripts/qtile/screenshot.sh")),
+    Key([mod, "shift"], "f", lazy.spawn("qutebrowser")),
+    Key([mod, "shift"], "a", lazy.group["Developement"].toscreen(toggle=False), lazy.spawn("android-studio")),
+    Key([mod, "shift"], "d", lazy.group["Music"].toscreen(toggle=False), lazy.spawn("deadbeef")),
 ]
 
 
 ##### GROUPS #####
 group_names = [("General", {'layout': 'Tile'}),
                ("Term", {'layout': 'Tile'}),
-	       ("IM", {'layout': 'Tile'}),
-               ("Files", {'layout': 'Tile'}),
+	       ("Developement", {'layout': 'Tile'}),
+	       ("Music", {'layout': 'Tile'}),
                ("Games", {'layout': 'Tile'}),
 	       ("VM", {'layout': 'TreeTab'}),
 	       ("Other", {'layout': 'Tile'}),
@@ -104,10 +104,10 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 #######################################
 
 groups = [
-	Group("General", matches=[Match(wm_class=["firefox", "Chromium"])]),	
+	Group("General", matches=[Match(wm_class=["qutebrowser"])]),	
 	Group("Term", matches=[Match(title=['~'])]),
-	Group("IM", matches=[Match(wm_class=["pulse-sms"])]),
-	Group("Files", matches=[Match(wm_class=["Pcmanfm"]), Match(title=["ranger"]), Match(wm_class=["mpv"])]),
+	Group("Developement", matches=[Match(wm_class=["jetbrains-studio"])]),
+	Group("Music", matches=[Match(wm_class=["Deadbeef"])]),
 	Group("Games", matches=[Match(wm_class=["Steam"]), Match(wm_class=["Lutris"])]),
 	Group("VM", matches=[Match(wm_class=["Virt-manager"])]),
 	Group("Other", matches=[Match(wm_class=["Barrier"])]),

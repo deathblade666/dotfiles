@@ -32,14 +32,13 @@ static const Rule rules[] = {
 	/* class                instance    title       tags mask     isfloating   monitor */
     	{ "qutebrowser",          NULL,      NULL,          1,	         0,           -1 },
 	{ "st-256color",          NULL,      NULL,          2,           0,	      -1 },
-	{ "VSCodium",	          NULL,      NULL,       1 << 2,	 0,           -1 },
+	{ "jetbrains-studio",     NULL,      NULL,       1 << 2,         0,            0 },
+	{ "Deadbeef",		  NULL,	     NULL,	 1 << 3,	 0,	       1 },
     	{ "Steam",	        "Steam", "Friends List", 1 << 4,         0,	       1 },
 	{ "Steam",	        "Steam",  "Steam",       1 << 4,	 0,	       0 },
-	{ "Virt-manager",         NULL,      NULL,       1 << 4,	 0,	      -1 },
-	{ "Gimp",	          NULL,      NULL,       1 << 5,         0,           -1 },
-	{ "Barrier",      	  NULL,	     NULL,       1 << 5,	 0,	       1 },
-	{ "Deadbeef",		  NULL,	     NULL,	 1 << 3,	 0,	       1 },
-	{ "jetbrains-studio",     NULL,      NULL,       1 << 2,         0,            0 },
+	{ "Virt-manager",         NULL,      NULL,       1 << 5,	 0,	      -1 },
+	{ "Gimp",	          NULL,      NULL,       1 << 6,         0,           -1 },
+	{ "pulse-sms",		  NULL,	     NULL,	 1 << 6,	 1,	       1 },
 
 };
 
@@ -79,6 +78,8 @@ static const char *games[] = { "steam", NULL };
 static const char *fm[] = { "st", "ranger", NULL }; 
 static const char *screenshot[] = { "/home/deathmasia/.config/scripts/qtile/screenshot.sh", NULL };
 static const char *android[] = {"android-studio", NULL};
+static const char *sms[] = {"pulse-sms", NULL};
+static const char *music[] = {"deadbeef", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -92,6 +93,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   {.v = fm } },
 	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = screenshot } },
 	{ MODKEY|ShiftMask,		XK_a,	   spawn,	   {.v = android } },
+	{ MODKEY|ShiftMask,	        XK_m,	   spawn,	   {.v = sms } },
+	{ MODKEY|ShiftMask,		XK_d,	   spawn,	   {.v = music } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Right,   focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Left,  focusstack,     {.i = -1 } },
