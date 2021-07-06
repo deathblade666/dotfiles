@@ -60,7 +60,7 @@ keys = [
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with
     # multiple stack panes
-    Key([mod, "shift"], "Return", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st")),
+    Key([mod, "shift"], "Return", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("alacritty")),
 
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout()),
@@ -68,14 +68,13 @@ keys = [
 
     Key([mod, "shift"], "r", lazy.restart()),
     Key([mod, "shift"], "q", lazy.shutdown()),
-    Key([mod], "r", lazy.spawn("rofi -modi run#ssh -show run")),
+    Key([mod], "r", lazy.spawn("dmenu_run -fn 'monospace:size=12' -nb #032541 -nf #ffffff ")),
 
     ################################################################
     # Custom Keybindings
     ################################################################
     Key([mod, "shift"], "e", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
     Key([mod, "shift"], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
-    Key([mod, "shift"], "m", lazy.group["General"].toscreen(toggle=False), lazy.spawn("pulse-sms")),
     Key([mod, "shift"], "p", lazy.spawn("./.config/scripts/qtile/screenshot.sh")),
     Key([mod, "shift"], "f", lazy.spawn("qutebrowser")),
     Key([mod, "shift"], "a", lazy.group["Developement"].toscreen(toggle=False), lazy.spawn("android-studio")),
@@ -244,19 +243,20 @@ def init_widgets_list():
 		widget.Volume(
 			background=colors[2],
 			foreground=colors[6],
-			padding=2
+			padding=2,
 		),
 		widget.TextBox(
 			text=" ↻ ",
-			mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn("st" + ' -e sudo pacman -Syy')},
+			mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("alacritty"  + ' -e sudo pacman -Syu')},
 			background=colors[2],
 			foreground=colors[6],
 		),
 		widget.CheckUpdates(
-			display_format=' {updates} ',
+			update_interval = 5,
+			distro = 'Arch',
+			display_format = '{updates}',
 			background=colors[2],
 			foreground=colors[6],
-			update_interval=5,
 			padding=5,
 		),
 		widget.Image(
@@ -270,19 +270,24 @@ def init_widgets_list():
 	    ]
     return widgets_list
 
+#def init_widgets_screen1():
+#    widgets_screen1 = init_widgets_list()
+#    del widgets_screen1[7:8]               # Slicing removes unwanted widgets (systray) on Monitors 1,3
+#    return widgets_screen1
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    return widgets_screen2                       # Monitor 2 will display all widgets in widgets_list
+    return widgets_screen2                 # Monitor 2 will display all widgets in widgets_list
 
 def init_screens():
-    return [
+    return [#Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20)),
             Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20)),
-            ]
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20))]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
     widgets_list = init_widgets_list()
+   # widgets_screen1 = init_widgets_screen1()
     widgets_screen2 = init_widgets_screen2()
 
 # Drag floating layouts.

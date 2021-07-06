@@ -31,7 +31,7 @@ static const Rule rules[] = {
 	 */
 	/* class                instance    title       tags mask     isfloating   monitor */
     	{ "qutebrowser",          NULL,      NULL,          1,	         0,           -1 },
-	{ "kitty",          NULL,      NULL,          2,           0,	      -1 },
+	{ "alacritty",          NULL,      NULL,          2,           0,	      -1 },
 	{ "jetbrains-studio",     NULL,      NULL,       1 << 2,         0,            0 },
 	{ "Deadbeef",		  NULL,	     NULL,	 1 << 3,	 0,	       1 },
     	{ "Steam",	        "Steam", "Friends List", 1 << 4,         0,	       1 },
@@ -73,12 +73,11 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *browser[] = { "qutebrowser", NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "kitty", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 static const char *games[] = { "steam", NULL };
-static const char *fm[] = { "kitty", "ranger", NULL }; 
+static const char *fm[] = { "st", "ranger", NULL }; 
 static const char *screenshot[] = { "/home/deathmasia/.config/scripts/qtile/screenshot.sh", NULL };
 static const char *android[] = {"android-studio", NULL};
-static const char *sms[] = {"pulse-sms", NULL};
 static const char *music[] = {"deadbeef", NULL};
 
 static Key keys[] = {
@@ -93,7 +92,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_e,	   spawn,	   {.v = fm } },
 	{ MODKEY|ShiftMask,		XK_p,	   spawn,	   {.v = screenshot } },
 	{ MODKEY|ShiftMask,		XK_a,	   spawn,	   {.v = android } },
-	{ MODKEY|ShiftMask,	        XK_m,	   spawn,	   {.v = sms } },
 	{ MODKEY|ShiftMask,		XK_d,	   spawn,	   {.v = music } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Right,   focusstack,     {.i = +1 } },
