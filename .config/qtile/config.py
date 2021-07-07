@@ -37,9 +37,11 @@ from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
 from typing import List  # noqa: F401
-
+from libqtile import qtile
+from libqtile.lazy import lazy
 
 mod = "mod4"
+myTerm = "alacritty"
 
 keys = [
     # Switch between windows in current stack pane
@@ -155,7 +157,6 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-
 ##### WIDGETS #####
 def init_widgets_list():
     widgets_list = [
@@ -232,29 +233,33 @@ def init_widgets_list():
 			foreground=colors[6],
 			padding=4,
 		),
+		widget.TextBox(
+			text = " ⟳",
+			padding = 5,
+			mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e sudo pacman -Syu')},
+			foreground = colors[6],
+			background = colors[3],
+			fontsize=14,
+		),
+		widget.CheckUpdates(
+			update_interval = 180,
+			display_format = "{updates} Updates",
+			no_update_string= "0 Updates",
+			distro = "Arch",
+			background=colors[3],
+			foreground=colors[6],
+			padding=5,
+		),
 		widget.Image(
 			filename="~/.config/qtile/pictures/arrow-purple.jpg",
 		),
 		widget.TextBox(
-			text="🔊 ",
-			background=colors[2],
-			foreground=colors[6],
-		),
-		widget.Volume(
+			text="Volume ",
 			background=colors[2],
 			foreground=colors[6],
 			padding=2,
 		),
-		widget.TextBox(
-			text=" ↻ ",
-			mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn("alacritty"  + ' -e sudo pacman -Syu')},
-			background=colors[2],
-			foreground=colors[6],
-		),
-		widget.CheckUpdates(
-			update_interval = 5,
-			distro = 'Arch',
-			display_format = '{updates}',
+		widget.Volume(
 			background=colors[2],
 			foreground=colors[6],
 			padding=5,
