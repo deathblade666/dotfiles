@@ -30,8 +30,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                instance    title       tags mask     isfloating   monitor */
-    	{ "qutebrowser",          NULL,      NULL,          1,	         0,           -1 },
-	{ "alacritty",          NULL,      NULL,          2,           0,	      -1 },
+    	{ "Vivaldi-stable",          NULL,      NULL,          1,	         0,           -1 },
+	{ "Alacritty",          NULL,      NULL,          2,           0,	      -1 },
 	{ "jetbrains-studio",     NULL,      NULL,       1 << 2,         0,            0 },
 	{ "Deadbeef",		  NULL,	     NULL,	 1 << 3,	 0,	       1 },
     	{ "Steam",	        "Steam", "Friends List", 1 << 4,         0,	       1 },
@@ -71,7 +71,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *browser[] = { "qutebrowser", NULL };
+static const char *browser[] = { "vivaldi-stable", NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *games[] = { "steam", NULL };
@@ -138,9 +138,9 @@ static Button buttons[] = {
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
-	{ ClkTagBar,            0,              Button1,        view,           {0} },
+	/*{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },*/
 };
 

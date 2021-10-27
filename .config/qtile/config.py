@@ -32,12 +32,10 @@ import os
 import re
 import socket
 import subprocess
-from libqtile.window import Window
-from libqtile.config import Key, Screen, Group, Drag, Click, Match
 from libqtile.command import lazy
-from libqtile import layout, bar, widget, hook
 from typing import List  # noqa: F401
-from libqtile import qtile
+from libqtile import bar, layout, widget, hook
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
@@ -76,9 +74,9 @@ keys = [
     # Custom Keybindings
     ################################################################
     Key([mod, "shift"], "e", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
-    Key([mod, "shift"], "s", lazy.group["Games"].toscreen(toggle=False), lazy.spawn("steam")),
+    Key([mod, "shift"], "s", lazy.group["Games"].toscreen(toggle=False),lazy.spawn("steam")),
     Key([mod, "shift"], "p", lazy.spawn("./.config/scripts/qtile/screenshot.sh")),
-    Key([mod, "shift"], "f", lazy.spawn("qutebrowser")),
+    Key([mod, "shift"], "f", lazy.spawn("vivaldi-stable")),
     Key([mod, "shift"], "a", lazy.group["Developement"].toscreen(toggle=False), lazy.spawn("android-studio")),
     Key([mod, "shift"], "d", lazy.group["Music"].toscreen(toggle=False), lazy.spawn("deadbeef")),
 ]
@@ -86,12 +84,12 @@ keys = [
 
 ##### GROUPS #####
 group_names = [("General", {'layout': 'Tile'}),
-               ("Term", {'layout': 'Tile'}),
-	       ("Developement", {'layout': 'Tile'}),
-	       ("Music", {'layout': 'Tile'}),
-               ("Games", {'layout': 'Tile'}),
-	       ("VM", {'layout': 'TreeTab'}),
-	       ("Other", {'layout': 'Tile'}),
+            ("Term", {'layout': 'Tile'}),
+	    ("Developement", {'layout': 'Tile'}),
+	    ("Music", {'layout': 'Tile'}),
+            ("Games", {'layout': 'Tile'}),
+	    ("VM", {'layout': 'Tile'}),
+	    ("Other", {'layout': 'Tile'}),
 ]
 
 groups = [Group(name, **kwargs) for name, kwargs in group_names]
@@ -105,7 +103,7 @@ for i, (name, kwargs) in enumerate(group_names, 1):
 #######################################
 
 groups = [
-	Group("General", matches=[Match(wm_class=["qutebrowser"])]),	
+	Group("General", matches=[Match(wm_class=["Vivaldi-stable"])]),	
 	Group("Term", matches=[Match(title=['~'])]),
 	Group("Developement", matches=[Match(wm_class=["jetbrains-studio"])]),
 	Group("Music", matches=[Match(wm_class=["Deadbeef"])]),
@@ -116,7 +114,7 @@ groups = [
 
 ##### DEFAULT THEME SETTINGS FOR LAYOUTS #####
 layout_theme = {"border_width": 1,
-                "margin": 0,
+                "margin": 6,
                 "border_focus": "#e78aba",
                 "border_normal": "#032541",
                 }
@@ -130,7 +128,7 @@ layouts = [
    # layout.MonadWide(),
    # layout.RatioTile(),
     layout.Tile(ratio=.50, **layout_theme),
-    layout.TreeTab(),
+   # layout.TreeTab(),
    # layout.VerticalTile(),
    # layout.Zoomy(),
 ]
@@ -146,7 +144,7 @@ colors = [["#032541", "#032541"], # panel background
           ["#ffffff", "#ffffff"]] # Text Color (White) 
 
 ##### PROMPT #####
-prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+#prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
 ##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
@@ -155,7 +153,7 @@ widget_defaults = dict(
     padding = 0,
     background=colors[0]
 )
-extension_defaults = widget_defaults.copy()
+#extension_defaults = widget_defaults.copy()
 
 ##### WIDGETS #####
 def init_widgets_list():
@@ -245,7 +243,7 @@ def init_widgets_list():
 			update_interval = 180,
 			display_format = "{updates} Updates",
 			no_update_string= "0 Updates",
-			distro = "Arch",
+			distro = "Arch_checkupdates",
 			background=colors[3],
 			foreground=colors[6],
 			padding=5,
@@ -275,10 +273,10 @@ def init_widgets_list():
 	    ]
     return widgets_list
 
-#def init_widgets_screen1():
-#    widgets_screen1 = init_widgets_list()
-#    del widgets_screen1[7:8]               # Slicing removes unwanted widgets (systray) on Monitors 1,3
-#    return widgets_screen1
+def init_widgets_screen1():
+    widgets_screen1 = init_widgets_list()
+    del widgets_screen1[7:8]               # Slicing removes unwanted widgets (systray) on Monitors 1,3
+    return widgets_screen1
 
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
@@ -287,12 +285,12 @@ def init_widgets_screen2():
 def init_screens():
     return [#Screen(top=bar.Bar(widgets=init_widgets_screen1(), opacity=1.0, size=20)),
             Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20)),
-            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20))]
+            Screen(top=bar.Bar(widgets=init_widgets_screen2(), opacity=1.0, size=20)),]
 
 if __name__ in ["config", "__main__"]:
     screens = init_screens()
     widgets_list = init_widgets_list()
-   # widgets_screen1 = init_widgets_screen1()
+    widgets_screen1 = init_widgets_screen1()
     widgets_screen2 = init_widgets_screen2()
 
 # Drag floating layouts.
@@ -310,35 +308,36 @@ dgroups_app_rules = []  # type: List
 main = None
 follow_mouse_focus = True
 bring_front_click = False
+auto_fullscreen = True
+focus_on_window_activation = "smart"
+reconfigure_screens = True
 cursor_warp = False
 floating_layout = layout.Floating(**layout_theme, float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
-    {'wmclass': 'wine'},
-    {'wname': 'vortex'},
+    *layout.Floating.default_float_rules,
+    Match(wm_class='confirm'),
+    Match(wm_class='dialog'),
+    Match(wm_class='download'),
+    Match(wm_class='error'),
+    Match(wm_class='file_progress'),
+    Match(wm_class='notification'),
+    Match(wm_class='splash'),
+    Match(wm_class='toolbar'),
+    Match(wm_class='confirmreset'),  # gitk
+    Match(wm_class='makebranch'),  # gitk
+    Match(wm_class='maketag'),  # gitk
+    Match(title='branchdialog'),  # gitk
+    Match(title='pinentry'),  # GPG key password entry
+    Match(wm_class='ssh-askpass'),  # ssh-askpass
+    Match(wm_class='wine'),
+    Match(title='vortex'),
 ])
-auto_fullscreen = True
-focus_on_window_activation = "smart"
 
 ##### STARTUP APPLICATIONS #####
 @hook.subscribe.startup_once
 def start_once():
     home = os.path.expanduser('~')
     subprocess.call([home + '/.config/scripts/qtile/startup.sh'])
-
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
