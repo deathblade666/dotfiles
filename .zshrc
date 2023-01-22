@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/deathmasia/.oh-my-zsh"
+ export ZSH="/home/deathmasia/.config/oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -70,7 +70,8 @@ eval `dircolors ~/.solarized/dircolors`
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
+ source $ZSH/oh-my-zsh.sh
+
 source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh 
 
 # User configuration
@@ -101,14 +102,16 @@ source ~/.zsh-autosuggestions/zsh-autosuggestions.zsh
 USER=''
 alias ..='cd ..'
 alias zshconf='vim ~/.zshrc'
-alias omzconf='vim ~/.oh-my-zsh/oh-my-zsh.sh'
-alias i3conf='vim ~/.config/i3/config'
 alias config='/usr/bin/git --git-dir=/home/deathmasia/.cfg/ --work-tree=/home/deathmasia'
 alias qtile='xinit qtile'
 alias dwm='xinit dwm'
 alias qtileconf='vim ~/.config/qtile/config.py'
 alias ls='ls -lagh'
 alias clear='clear && zsh'
-alias poweroff='sudo killall barriers && sudo killall jellyfin && shutdown -h now'
-alias update='sudo pacman -Syu && paru -Syu'
-alias reboot='sudo killall barriers && sudo killall jellyfin && reboot'
+alias poweroff='sudo killall jellyfin && shutdown -h now'
+alias update='sudo pacman -Sy archlinux-keyring --noconfirm && sudo pacman -Syu && paru -Syu'
+alias reboot='sudo killall jellyfin && sudo systemctl reboot'
+alias nas='ssh root@10.250.250.3'
+alias pihole='ssh pi@10.0.1.111'
+alias alpha='ssh pi@10.0.1.140'
+alias diablo='sudo WINEPREFIX=/home/deathmasia/Games/battlenet-wine-prefix/ WINEARCH=win64 wine /home/deathmasia/Games/battlenet-wine-prefix/drive_c/Program\ Files\ \(x86\)/Battle.net/Battle.net\ Launcher.exe'

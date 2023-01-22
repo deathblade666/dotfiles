@@ -2,7 +2,6 @@
 exec hsetroot -full ~/Pictures/wallpapers/Wolf.jpg &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 picom &
-barriers --no-tray --debug INFO --name ArchLinux --enable-crypto -c /home/deathmasia/.config/barrier/Barrier --address :24800 &
 xset s off &
 export BROWSER="/usr/bin/oqutebrowser"
 if [ -n "$DESKTOP_SESSION" ];then
@@ -23,9 +22,19 @@ bar()  (\
 
     echo "$sep"
 
+    memUsage=$(free -m | awk '/Mem/{print $3}')
+    echo "RAM: $memUsage MB"
+
+    echo "$sep"
+
+    swap=$(free -m | awk '/Swap/{print $3}')
+    echo "Swap $swap MB"
+
+    echo "$sep"
+
     # gpu temps
     GPU=$(nvidia-smi --format=nounits,csv,noheader --query-gpu=temperature.gpu)
-    echo "GPU Temp: $GPU"
+    echo "GPU Temp: $GPU °C"
 
     echo "$sep"
 

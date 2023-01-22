@@ -30,7 +30,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                instance    title       tags mask     isfloating   monitor */
-    	{ "Vivaldi-stable",          NULL,      NULL,          1,	         0,           -1 },
+    	{ "LibreWolf",          NULL,      NULL,          1,	         0,           -1 },
 	{ "Alacritty",          NULL,      NULL,          2,           0,	      -1 },
 	{ "jetbrains-studio",     NULL,      NULL,       1 << 2,         0,            0 },
 	{ "Deadbeef",		  NULL,	     NULL,	 1 << 3,	 0,	       1 },
@@ -71,7 +71,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *browser[] = { "vivaldi-stable", NULL };
+static const char *browser[] = { "librewolf", NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *games[] = { "steam", NULL };
@@ -82,8 +82,8 @@ static const char *music[] = {"deadbeef", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ 0,		  XF86XK_AudioRaiseVolume, spawn,          SHCMD("amixer -c 0 set Headphone 1%+") },
-        { 0,	          XF86XK_AudioLowerVolume, spawn,	   SHCMD("amixer -c 0 set Headphone 1%-") },
+	{ 0,		  XF86XK_AudioRaiseVolume, spawn,          SHCMD("amixer -c 0 set PCM 1%+") },
+        { 0,	          XF86XK_AudioLowerVolume, spawn,	   SHCMD("amixer -c 0 set PCM 1%-") },
 	{ 0,		        XF86XK_AudioMute,  spawn,	   SHCMD("amixer -D pulse set Master 1+ toggle") },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },

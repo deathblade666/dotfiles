@@ -1,4 +1,4 @@
-# Copyright (c) 2010 Aldo Cortesi
+
 # Copyright (c) 2010, 2014 dequis
 # Copyright (c) 2012 Randall Ma
 # Copyright (c) 2012-2014 Tycho Andersen
@@ -76,7 +76,7 @@ keys = [
     Key([mod, "shift"], "e", lazy.group["Term"].toscreen(toggle=False), lazy.spawn("st" + ' -e ranger')),
     Key([mod, "shift"], "s", lazy.group["Games"].toscreen(toggle=False),lazy.spawn("steam")),
     Key([mod, "shift"], "p", lazy.spawn("./.config/scripts/qtile/screenshot.sh")),
-    Key([mod, "shift"], "f", lazy.spawn("vivaldi-stable")),
+    Key([mod, "shift"], "f", lazy.group["General"].toscreen(toggle=False),lazy.spawn("librewolf")),
     Key([mod, "shift"], "a", lazy.group["Developement"].toscreen(toggle=False), lazy.spawn("android-studio")),
     Key([mod, "shift"], "d", lazy.group["Music"].toscreen(toggle=False), lazy.spawn("deadbeef")),
 ]
@@ -309,7 +309,7 @@ main = None
 follow_mouse_focus = True
 bring_front_click = False
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "focus"
 reconfigure_screens = True
 cursor_warp = False
 floating_layout = layout.Floating(**layout_theme, float_rules=[
