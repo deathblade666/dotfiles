@@ -1,7 +1,8 @@
 #!/bin/zsh
 exec hsetroot -full ~/Pictures/wallpapers/Wolf.jpg &
+exec filen.appimage &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-picom &
+picom --no-fading-openclose &
 xset s off &
 export BROWSER="/usr/bin/oqutebrowser"
 if [ -n "$DESKTOP_SESSION" ];then

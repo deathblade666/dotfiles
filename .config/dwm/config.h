@@ -22,7 +22,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "General", "Terminal", "Development", "Music", "Games", "VM", "Other", };
+static const char *tags[] = { "1 gen", "2 term", "3 games","4 Music", "5 social", "6 other", "7 backup", };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -30,16 +30,16 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class                instance    title       tags mask     isfloating   monitor */
-    	{ "LibreWolf",          NULL,      NULL,          1,	         0,           -1 },
-	{ "Alacritty",          NULL,      NULL,          2,           0,	      -1 },
-	{ "jetbrains-studio",     NULL,      NULL,       1 << 2,         0,            0 },
-	{ "Deadbeef",		  NULL,	     NULL,	 1 << 3,	 0,	       1 },
-    	{ "Steam",	        "Steam", "Friends List", 1 << 4,         0,	       1 },
-	{ "Steam",	        "Steam",  "Steam",       1 << 4,	 0,	       0 },
-	{ "Virt-manager",         NULL,      NULL,       1 << 5,	 0,	      -1 },
-	{ "Gimp",	          NULL,      NULL,       1 << 6,         0,           -1 },
-	{ "pulse-sms",		  NULL,	     NULL,	 1 << 6,	 1,	       1 },
-
+    	{ "LibreWolf",          NULL,	    NULL,        1,		    0,           -1 },
+	{ "Alacritty",          NULL,	    NULL,        2,		    0,	         -1 },
+    	{ "steam",     "steamwebhelper", "Friends List", 1 << 2,            0,		  1 },
+	{ "steam",     "steamwebhelper",  "Steam",       1 << 2,	    0,		  0 },
+	{ "Gimp",	        NULL,	    NULL,        1 << 5,	    0,           -1 },
+	{ "discord",            NULL,	    NULL,        1 << 4,	    0,            1 },
+	{ "filen-desktop",      NULL,	    NULL,        1 << 6,	    0,           -1 },
+	{ "nuclear",            NULL,	    NULL,        1 << 3,	    0,            1 },
+	{ "Minecraft* 1.18.2",  NULL,	    NULL,        1 << 2,	    0,            0 },
+	{ "minecraft-launcher", NULL,	    NULL,	 1 << 2,	    0,            0 },
 };
 
 /* layout(s) */
@@ -75,15 +75,15 @@ static const char *browser[] = { "librewolf", NULL };
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
 static const char *games[] = { "steam", NULL };
-static const char *fm[] = { "st", "ranger", NULL }; 
+static const char *fm[] = { "st", "nnn", NULL }; 
 static const char *screenshot[] = { "/home/deathmasia/.config/scripts/qtile/screenshot.sh", NULL };
 static const char *android[] = {"android-studio", NULL};
 static const char *music[] = {"deadbeef", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ 0,		  XF86XK_AudioRaiseVolume, spawn,          SHCMD("amixer -c 0 set PCM 1%+") },
-        { 0,	          XF86XK_AudioLowerVolume, spawn,	   SHCMD("amixer -c 0 set PCM 1%-") },
+	{ 0,		  XF86XK_AudioRaiseVolume, spawn,          SHCMD("amixer -c 3 set PCM 1%+") },
+        { 0,	          XF86XK_AudioLowerVolume, spawn,	   SHCMD("amixer -c 3 set PCM 1%-") },
 	{ 0,		        XF86XK_AudioMute,  spawn,	   SHCMD("amixer -D pulse set Master 1+ toggle") },
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
